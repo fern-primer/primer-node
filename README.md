@@ -1,39 +1,88 @@
-# TODO Node Library
+# Primer Node Library
 
-[![npm shield](https://img.shields.io/npm/v/@fern-api/TODO)](https://www.npmjs.com/package/@fern-api/TODO)
+[![npm shield](https://img.shields.io/npm/v/@fern-api/primer)](https://www.npmjs.com/package/@fern-api/primer)
+
+The Primer Node library provides access to the Primer API from JavaScript/TypeScript.
 
 ## Documentation
 
-API documentation is available at <https://docs.TODO.com/>.
+API documentation is available at https://apiref.primer.io/reference.
 
 ## Usage
 
 ```typescript
-import { TODO } from "TODO";
+import { PrimerApi } from "primer";
 
-...
+const primer = new PrimerApi.Client({
+  _origin: "https://api.sandbox.primer.io",
+  apiKey: process.env.PRIMER_TOKEN,
+});
 
+const createClientResponse = await primer.clientSession.create({
+  orderId: "my-order-id",
+  amount: 200,
+});
+
+if (!createClientResponse.ok) {
+  throw new Error(createClientResponse.error.errorName);
+}
+
+console.log(createClientResponse.body.clientToken);
 ```
 
-## Sample app
+## Sample App
 
-Check out the [sample app](.sample-app/app.ts) which consumes this SDK!
+Checkout the [sample app](.sample-app/app.ts) which consumes this SDK!
 
 ```bash
-export TODO_TOKEN=...
+export PRIMER_TOKEN=...
 
-...
+yarn install
 
+cd .sample-app
+yarn install
+yarn start
 ```
 
 ## SDK Examples
 
-Below are a few examples of how to use the SDK to hit different endpoints. Check out our [API Reference](https://docs.TODO.com/) to see all of our endpoints.
+Below are a few examples of how to use the SDK to hit different endpoints. Checkout our [API Reference](https://apiref.primer.io/reference/create_client_side_token_client_session_post) to see all of our endpoints.
 
-### TODO 1
+### Searching Payments
 
 ```typescript
-... TODO 
+const searchResponse = await primer.payments.search({
+  paypalEmail: "customer@acme.com",
+  limit: 10,
+  paymentMethodType: "PAYPAL",
+});
+
+if (!searchResponse.ok) {
+  throw new Error(`Encountered error ${searchResponse.error.errorName}`);
+}
+
+for (const searchPaymentResponse of searchResponse.body.data) {
+  console.log(
+    `Found payment of ${searchPaymentResponse.amount} ${searchPaymentResponse.currencyCode}`
+  );
+}
+```
+
+### Save payment method token
+
+```typescript
+const saveTokenResponse = await primer.paymentMethod.saveToken({
+  paymentMethodToken: "my-payment-method-token",
+  _body: {
+    customerId: "customer-id",
+  },
+});
+
+if (!saveTokenResponse.ok) {
+  throw new Error(`Encountered error ${saveTokenResponse.error}`);
+}
+
+console.log("Saved token!", saveTokenResponse.body.token);
 ```
 
 ## Beta status
@@ -42,4 +91,4 @@ This SDK is in beta, and there may be breaking changes between versions without 
 
 ## Questions or feedback?
 
-Feel free to [leave an issue](https://github.com/fern-api/TODO-node) on this repo.
+Feel free to [leave an issue](https://github.com/fern-primer/primer-node) on this repo!
