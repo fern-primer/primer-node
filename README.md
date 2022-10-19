@@ -37,8 +37,6 @@ Checkout the [sample app](.sample-app/app.ts) which consumes this SDK!
 ```bash
 export PRIMER_TOKEN=...
 
-yarn install
-
 cd .sample-app
 yarn install
 yarn start
