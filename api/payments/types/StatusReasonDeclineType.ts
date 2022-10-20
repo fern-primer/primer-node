@@ -20,10 +20,26 @@ const _HardDecline: StatusReasonDeclineType<"HARD_DECLINE"> = {
 export const StatusReasonDeclineType = {
   SoftDecline: _SoftDecline,
   HardDecline: _HardDecline,
+  _parse: (value: string): StatusReasonDeclineType => {
+    switch (value) {
+      case "SOFT_DECLINE": {
+        return _SoftDecline;
+      }
+      case "HARD_DECLINE": {
+        return _HardDecline;
+      }
+      default: {
+        return {
+          value: value as StatusReasonDeclineType.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace StatusReasonDeclineType {
-  type RawValue = "SOFT_DECLINE" | "HARD_DECLINE" | string;
+  type RawValue = "SOFT_DECLINE" | "HARD_DECLINE";
 
   interface _Visitor<Result> {
     softDecline: () => Result;

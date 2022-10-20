@@ -921,6 +921,562 @@ export const CurrencyCode = {
   Zar: _Zar,
   Zmw: _Zmw,
   Zwl: _Zwl,
+  _parse: (value: string): CurrencyCode => {
+    switch (value) {
+      case "AED": {
+        return _Aed;
+      }
+      case "AFN": {
+        return _Afn;
+      }
+      case "ALL": {
+        return _All;
+      }
+      case "AMD": {
+        return _Amd;
+      }
+      case "ANG": {
+        return _Ang;
+      }
+      case "AOA": {
+        return _Aoa;
+      }
+      case "ARS": {
+        return _Ars;
+      }
+      case "AUD": {
+        return _Aud;
+      }
+      case "AWG": {
+        return _Awg;
+      }
+      case "AZN": {
+        return _Azn;
+      }
+      case "BAM": {
+        return _Bam;
+      }
+      case "BBD": {
+        return _Bbd;
+      }
+      case "BDT": {
+        return _Bdt;
+      }
+      case "BGN": {
+        return _Bgn;
+      }
+      case "BHD": {
+        return _Bhd;
+      }
+      case "BIF": {
+        return _Bif;
+      }
+      case "BMD": {
+        return _Bmd;
+      }
+      case "BND": {
+        return _Bnd;
+      }
+      case "BOB": {
+        return _Bob;
+      }
+      case "BOV": {
+        return _Bov;
+      }
+      case "BRL": {
+        return _Brl;
+      }
+      case "BSD": {
+        return _Bsd;
+      }
+      case "BTN": {
+        return _Btn;
+      }
+      case "BWP": {
+        return _Bwp;
+      }
+      case "BYR": {
+        return _Byr;
+      }
+      case "BYN": {
+        return _Byn;
+      }
+      case "BZD": {
+        return _Bzd;
+      }
+      case "CAD": {
+        return _Cad;
+      }
+      case "CDF": {
+        return _Cdf;
+      }
+      case "CHE": {
+        return _Che;
+      }
+      case "CHF": {
+        return _Chf;
+      }
+      case "CHW": {
+        return _Chw;
+      }
+      case "CLF": {
+        return _Clf;
+      }
+      case "CLP": {
+        return _Clp;
+      }
+      case "CNY": {
+        return _Cny;
+      }
+      case "COP": {
+        return _Cop;
+      }
+      case "COU": {
+        return _Cou;
+      }
+      case "CRC": {
+        return _Crc;
+      }
+      case "CUC": {
+        return _Cuc;
+      }
+      case "CUP": {
+        return _Cup;
+      }
+      case "CVE": {
+        return _Cve;
+      }
+      case "CZK": {
+        return _Czk;
+      }
+      case "DJF": {
+        return _Djf;
+      }
+      case "DKK": {
+        return _Dkk;
+      }
+      case "DOP": {
+        return _Dop;
+      }
+      case "DZD": {
+        return _Dzd;
+      }
+      case "EGP": {
+        return _Egp;
+      }
+      case "ERN": {
+        return _Ern;
+      }
+      case "ETB": {
+        return _Etb;
+      }
+      case "EUR": {
+        return _Eur;
+      }
+      case "FJD": {
+        return _Fjd;
+      }
+      case "FKP": {
+        return _Fkp;
+      }
+      case "GBP": {
+        return _Gbp;
+      }
+      case "GEL": {
+        return _Gel;
+      }
+      case "GHS": {
+        return _Ghs;
+      }
+      case "GIP": {
+        return _Gip;
+      }
+      case "GMD": {
+        return _Gmd;
+      }
+      case "GNF": {
+        return _Gnf;
+      }
+      case "GTQ": {
+        return _Gtq;
+      }
+      case "GYD": {
+        return _Gyd;
+      }
+      case "HKD": {
+        return _Hkd;
+      }
+      case "HNL": {
+        return _Hnl;
+      }
+      case "HRK": {
+        return _Hrk;
+      }
+      case "HTG": {
+        return _Htg;
+      }
+      case "HUF": {
+        return _Huf;
+      }
+      case "IDR": {
+        return _Idr;
+      }
+      case "ILS": {
+        return _Ils;
+      }
+      case "INR": {
+        return _Inr;
+      }
+      case "IQD": {
+        return _Iqd;
+      }
+      case "IRR": {
+        return _Irr;
+      }
+      case "ISK": {
+        return _Isk;
+      }
+      case "JMD": {
+        return _Jmd;
+      }
+      case "JOD": {
+        return _Jod;
+      }
+      case "JPY": {
+        return _Jpy;
+      }
+      case "KES": {
+        return _Kes;
+      }
+      case "KGS": {
+        return _Kgs;
+      }
+      case "KHR": {
+        return _Khr;
+      }
+      case "KMF": {
+        return _Kmf;
+      }
+      case "KPW": {
+        return _Kpw;
+      }
+      case "KRW": {
+        return _Krw;
+      }
+      case "KWD": {
+        return _Kwd;
+      }
+      case "KYD": {
+        return _Kyd;
+      }
+      case "KZT": {
+        return _Kzt;
+      }
+      case "LAK": {
+        return _Lak;
+      }
+      case "LBP": {
+        return _Lbp;
+      }
+      case "LKR": {
+        return _Lkr;
+      }
+      case "LRD": {
+        return _Lrd;
+      }
+      case "LSL": {
+        return _Lsl;
+      }
+      case "LTL": {
+        return _Ltl;
+      }
+      case "LVL": {
+        return _Lvl;
+      }
+      case "LYD": {
+        return _Lyd;
+      }
+      case "MAD": {
+        return _Mad;
+      }
+      case "MDL": {
+        return _Mdl;
+      }
+      case "MGA": {
+        return _Mga;
+      }
+      case "MKD": {
+        return _Mkd;
+      }
+      case "MMK": {
+        return _Mmk;
+      }
+      case "MNT": {
+        return _Mnt;
+      }
+      case "MOP": {
+        return _Mop;
+      }
+      case "MRO": {
+        return _Mro;
+      }
+      case "MUR": {
+        return _Mur;
+      }
+      case "MVR": {
+        return _Mvr;
+      }
+      case "MWK": {
+        return _Mwk;
+      }
+      case "MXN": {
+        return _Mxn;
+      }
+      case "MXV": {
+        return _Mxv;
+      }
+      case "MYR": {
+        return _Myr;
+      }
+      case "MZN": {
+        return _Mzn;
+      }
+      case "NAD": {
+        return _Nad;
+      }
+      case "NGN": {
+        return _Ngn;
+      }
+      case "NIO": {
+        return _Nio;
+      }
+      case "NOK": {
+        return _Nok;
+      }
+      case "NPR": {
+        return _Npr;
+      }
+      case "NZD": {
+        return _Nzd;
+      }
+      case "OMR": {
+        return _Omr;
+      }
+      case "PAB": {
+        return _Pab;
+      }
+      case "PEN": {
+        return _Pen;
+      }
+      case "PGK": {
+        return _Pgk;
+      }
+      case "PHP": {
+        return _Php;
+      }
+      case "PKR": {
+        return _Pkr;
+      }
+      case "PLN": {
+        return _Pln;
+      }
+      case "PYG": {
+        return _Pyg;
+      }
+      case "QAR": {
+        return _Qar;
+      }
+      case "RON": {
+        return _Ron;
+      }
+      case "RSD": {
+        return _Rsd;
+      }
+      case "RUB": {
+        return _Rub;
+      }
+      case "RWF": {
+        return _Rwf;
+      }
+      case "SAR": {
+        return _Sar;
+      }
+      case "SBD": {
+        return _Sbd;
+      }
+      case "SCR": {
+        return _Scr;
+      }
+      case "SDG": {
+        return _Sdg;
+      }
+      case "SEK": {
+        return _Sek;
+      }
+      case "SGD": {
+        return _Sgd;
+      }
+      case "SHP": {
+        return _Shp;
+      }
+      case "SLL": {
+        return _Sll;
+      }
+      case "SOS": {
+        return _Sos;
+      }
+      case "SRD": {
+        return _Srd;
+      }
+      case "SSP": {
+        return _Ssp;
+      }
+      case "STD": {
+        return _Std;
+      }
+      case "SVC": {
+        return _Svc;
+      }
+      case "SYP": {
+        return _Syp;
+      }
+      case "SZL": {
+        return _Szl;
+      }
+      case "THB": {
+        return _Thb;
+      }
+      case "TJS": {
+        return _Tjs;
+      }
+      case "TMT": {
+        return _Tmt;
+      }
+      case "TND": {
+        return _Tnd;
+      }
+      case "TOP": {
+        return _Top;
+      }
+      case "TRY": {
+        return _Try;
+      }
+      case "TTD": {
+        return _Ttd;
+      }
+      case "TWD": {
+        return _Twd;
+      }
+      case "TZS": {
+        return _Tzs;
+      }
+      case "UAH": {
+        return _Uah;
+      }
+      case "UGX": {
+        return _Ugx;
+      }
+      case "USD": {
+        return _Usd;
+      }
+      case "USN": {
+        return _Usn;
+      }
+      case "USS": {
+        return _Uss;
+      }
+      case "UYI": {
+        return _Uyi;
+      }
+      case "UYU": {
+        return _Uyu;
+      }
+      case "UZS": {
+        return _Uzs;
+      }
+      case "VEF": {
+        return _Vef;
+      }
+      case "VND": {
+        return _Vnd;
+      }
+      case "VUV": {
+        return _Vuv;
+      }
+      case "WST": {
+        return _Wst;
+      }
+      case "XAF": {
+        return _Xaf;
+      }
+      case "XAG": {
+        return _Xag;
+      }
+      case "XAU": {
+        return _Xau;
+      }
+      case "XBA": {
+        return _Xba;
+      }
+      case "XBB": {
+        return _Xbb;
+      }
+      case "XBC": {
+        return _Xbc;
+      }
+      case "XBD": {
+        return _Xbd;
+      }
+      case "XCD": {
+        return _Xcd;
+      }
+      case "XDR": {
+        return _Xdr;
+      }
+      case "XFU": {
+        return _Xfu;
+      }
+      case "XOF": {
+        return _Xof;
+      }
+      case "XPD": {
+        return _Xpd;
+      }
+      case "XPF": {
+        return _Xpf;
+      }
+      case "XPT": {
+        return _Xpt;
+      }
+      case "XSU": {
+        return _Xsu;
+      }
+      case "XTS": {
+        return _Xts;
+      }
+      case "XUA": {
+        return _Xua;
+      }
+      case "YER": {
+        return _Yer;
+      }
+      case "ZAR": {
+        return _Zar;
+      }
+      case "ZMW": {
+        return _Zmw;
+      }
+      case "ZWL": {
+        return _Zwl;
+      }
+      default: {
+        return {
+          value: value as CurrencyCode.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace CurrencyCode {
@@ -1106,8 +1662,7 @@ export declare namespace CurrencyCode {
     | "YER"
     | "ZAR"
     | "ZMW"
-    | "ZWL"
-    | string;
+    | "ZWL";
 
   interface _Visitor<Result> {
     aed: () => Result;

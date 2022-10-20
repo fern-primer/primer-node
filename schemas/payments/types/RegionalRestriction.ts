@@ -7,26 +7,8 @@ import * as core from "../../../core";
 
 export const RegionalRestriction: core.schemas.Schema<RegionalRestriction.Raw, PrimerApi.payments.RegionalRestriction> =
   core.schemas.string().transform<PrimerApi.payments.RegionalRestriction>({
-    parse: (value) => {
-      switch (value) {
-        case "DOMESTIC_USE_ONLY": {
-          return PrimerApi.payments.RegionalRestriction.DomesticUseOnly;
-        }
-        case "NONE": {
-          return PrimerApi.payments.RegionalRestriction.None;
-        }
-        case "UNKNOWN": {
-          return PrimerApi.payments.RegionalRestriction.Unknown;
-        }
-        default: {
-          return {
-            value: value,
-            visit: (visitor) => visitor._other(value),
-          };
-        }
-      }
-    },
-    json: (value) => value.value,
+    parse: (value) => PrimerApi.payments.RegionalRestriction._parse(value),
+    json: ({ value }) => value,
   });
 
 export declare namespace RegionalRestriction {

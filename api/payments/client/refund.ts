@@ -9,6 +9,7 @@ export interface Request {
   apiKey?: core.Supplier<string>;
   /** ID of the payment to refund. */
   id: PrimerApi.payments.PaymentId;
+  xIdempotencyKey?: string;
   _body: PrimerApi.payments.RefundPaymentRequest;
 }
 

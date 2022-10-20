@@ -28,10 +28,32 @@ export const ProductUsageType = {
   Business: _Business,
   Government: _Government,
   Unknown: _Unknown,
+  _parse: (value: string): ProductUsageType => {
+    switch (value) {
+      case "CONSUMER": {
+        return _Consumer;
+      }
+      case "BUSINESS": {
+        return _Business;
+      }
+      case "GOVERNMENT": {
+        return _Government;
+      }
+      case "UNKNOWN": {
+        return _Unknown;
+      }
+      default: {
+        return {
+          value: value as ProductUsageType.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace ProductUsageType {
-  type RawValue = "CONSUMER" | "BUSINESS" | "GOVERNMENT" | "UNKNOWN" | string;
+  type RawValue = "CONSUMER" | "BUSINESS" | "GOVERNMENT" | "UNKNOWN";
 
   interface _Visitor<Result> {
     consumer: () => Result;

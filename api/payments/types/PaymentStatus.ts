@@ -48,6 +48,40 @@ export const PaymentStatus = {
   Settled: _Settled,
   Declined: _Declined,
   Cancelled: _Cancelled,
+  _parse: (value: string): PaymentStatus => {
+    switch (value) {
+      case "PENDING": {
+        return _Pending;
+      }
+      case "FAILED": {
+        return _Failed;
+      }
+      case "AUTHORIZED": {
+        return _Authorized;
+      }
+      case "SETTLING": {
+        return _Settling;
+      }
+      case "PARTIALLY_SETTLED": {
+        return _PartiallySettled;
+      }
+      case "SETTLED": {
+        return _Settled;
+      }
+      case "DECLINED": {
+        return _Declined;
+      }
+      case "CANCELLED": {
+        return _Cancelled;
+      }
+      default: {
+        return {
+          value: value as PaymentStatus.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace PaymentStatus {
@@ -59,8 +93,7 @@ export declare namespace PaymentStatus {
     | "PARTIALLY_SETTLED"
     | "SETTLED"
     | "DECLINED"
-    | "CANCELLED"
-    | string;
+    | "CANCELLED";
 
   interface _Visitor<Result> {
     pending: () => Result;

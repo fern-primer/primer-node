@@ -23,10 +23,29 @@ export const StatusReasonType = {
   ApplicationError: _ApplicationError,
   GatewayRejected: _GatewayRejected,
   IssuerDeclined: _IssuerDeclined,
+  _parse: (value: string): StatusReasonType => {
+    switch (value) {
+      case "APPLICATION_ERROR": {
+        return _ApplicationError;
+      }
+      case "GATEWAY_REJECTED": {
+        return _GatewayRejected;
+      }
+      case "ISSUER_DECLINED": {
+        return _IssuerDeclined;
+      }
+      default: {
+        return {
+          value: value as StatusReasonType.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace StatusReasonType {
-  type RawValue = "APPLICATION_ERROR" | "GATEWAY_REJECTED" | "ISSUER_DECLINED" | string;
+  type RawValue = "APPLICATION_ERROR" | "GATEWAY_REJECTED" | "ISSUER_DECLINED";
 
   interface _Visitor<Result> {
     applicationError: () => Result;

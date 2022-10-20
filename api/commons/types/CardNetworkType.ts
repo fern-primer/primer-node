@@ -86,6 +86,61 @@ export const CardNetworkType = {
   PrivateLabel: _PrivateLabel,
   Unionpay: _Unionpay,
   Visa: _Visa,
+  _parse: (value: string): CardNetworkType => {
+    switch (value) {
+      case "AMEX": {
+        return _Amex;
+      }
+      case "DANKORT": {
+        return _Dankort;
+      }
+      case "DINERS_CLUB": {
+        return _DinersClub;
+      }
+      case "DISCOVER": {
+        return _Discover;
+      }
+      case "ENROUTE": {
+        return _Enroute;
+      }
+      case "ELO": {
+        return _Elo;
+      }
+      case "HIPER": {
+        return _Hiper;
+      }
+      case "INTERAC": {
+        return _Interac;
+      }
+      case "JCB": {
+        return _Jcb;
+      }
+      case "MAESTRO": {
+        return _Maestro;
+      }
+      case "MASTERCARD": {
+        return _Mastercard;
+      }
+      case "MIR": {
+        return _Mir;
+      }
+      case "PRIVATE_LABEL": {
+        return _PrivateLabel;
+      }
+      case "UNIONPAY": {
+        return _Unionpay;
+      }
+      case "VISA": {
+        return _Visa;
+      }
+      default: {
+        return {
+          value: value as CardNetworkType.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace CardNetworkType {
@@ -104,8 +159,7 @@ export declare namespace CardNetworkType {
     | "MIR"
     | "PRIVATE_LABEL"
     | "UNIONPAY"
-    | "VISA"
-    | string;
+    | "VISA";
 
   interface _Visitor<Result> {
     amex: () => Result;

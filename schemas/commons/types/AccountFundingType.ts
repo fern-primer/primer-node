@@ -7,35 +7,8 @@ import * as core from "../../../core";
 
 export const AccountFundingType: core.schemas.Schema<AccountFundingType.Raw, PrimerApi.commons.AccountFundingType> =
   core.schemas.string().transform<PrimerApi.commons.AccountFundingType>({
-    parse: (value) => {
-      switch (value) {
-        case "CREDIT": {
-          return PrimerApi.commons.AccountFundingType.Credit;
-        }
-        case "DEBIT": {
-          return PrimerApi.commons.AccountFundingType.Debit;
-        }
-        case "PREPAID": {
-          return PrimerApi.commons.AccountFundingType.Prepaid;
-        }
-        case "CHARGE": {
-          return PrimerApi.commons.AccountFundingType.Charge;
-        }
-        case "DEFERRED_DEBIT": {
-          return PrimerApi.commons.AccountFundingType.DeferredDebit;
-        }
-        case "UNKNOWN": {
-          return PrimerApi.commons.AccountFundingType.Unknown;
-        }
-        default: {
-          return {
-            value: value,
-            visit: (visitor) => visitor._other(value),
-          };
-        }
-      }
-    },
-    json: (value) => value.value,
+    parse: (value) => PrimerApi.commons.AccountFundingType._parse(value),
+    json: ({ value }) => value,
   });
 
 export declare namespace AccountFundingType {

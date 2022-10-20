@@ -9,29 +9,8 @@ export const PrepaidReloadableIndicator: core.schemas.Schema<
   PrepaidReloadableIndicator.Raw,
   PrimerApi.payments.PrepaidReloadableIndicator
 > = core.schemas.string().transform<PrimerApi.payments.PrepaidReloadableIndicator>({
-  parse: (value) => {
-    switch (value) {
-      case "RELOADABLE": {
-        return PrimerApi.payments.PrepaidReloadableIndicator.Reloadable;
-      }
-      case "NON_RELOADABLE": {
-        return PrimerApi.payments.PrepaidReloadableIndicator.NonReloadable;
-      }
-      case "NOT_APPLICABLE": {
-        return PrimerApi.payments.PrepaidReloadableIndicator.NotApplicable;
-      }
-      case "UNKNOWN": {
-        return PrimerApi.payments.PrepaidReloadableIndicator.Unknown;
-      }
-      default: {
-        return {
-          value: value,
-          visit: (visitor) => visitor._other(value),
-        };
-      }
-    }
-  },
-  json: (value) => value.value,
+  parse: (value) => PrimerApi.payments.PrepaidReloadableIndicator._parse(value),
+  json: ({ value }) => value,
 });
 
 export declare namespace PrepaidReloadableIndicator {

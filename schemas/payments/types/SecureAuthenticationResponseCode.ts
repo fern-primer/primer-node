@@ -9,32 +9,8 @@ export const SecureAuthenticationResponseCode: core.schemas.Schema<
   SecureAuthenticationResponseCode.Raw,
   PrimerApi.payments.SecureAuthenticationResponseCode
 > = core.schemas.string().transform<PrimerApi.payments.SecureAuthenticationResponseCode>({
-  parse: (value) => {
-    switch (value) {
-      case "NOT_PERFORMED": {
-        return PrimerApi.payments.SecureAuthenticationResponseCode.NotPerformed;
-      }
-      case "SKIPPED": {
-        return PrimerApi.payments.SecureAuthenticationResponseCode.Skipped;
-      }
-      case "AUTH_SUCCESS": {
-        return PrimerApi.payments.SecureAuthenticationResponseCode.AuthSuccess;
-      }
-      case "AUTH_FAILED": {
-        return PrimerApi.payments.SecureAuthenticationResponseCode.AuthFailed;
-      }
-      case "CHALLENGE_METHOD": {
-        return PrimerApi.payments.SecureAuthenticationResponseCode.ChallengeMethod;
-      }
-      default: {
-        return {
-          value: value,
-          visit: (visitor) => visitor._other(value),
-        };
-      }
-    }
-  },
-  json: (value) => value.value,
+  parse: (value) => PrimerApi.payments.SecureAuthenticationResponseCode._parse(value),
+  json: ({ value }) => value,
 });
 
 export declare namespace SecureAuthenticationResponseCode {

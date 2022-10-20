@@ -8,62 +8,8 @@ import * as core from "../../../core";
 export const CardNetworkType: core.schemas.Schema<CardNetworkType.Raw, PrimerApi.commons.CardNetworkType> = core.schemas
   .string()
   .transform<PrimerApi.commons.CardNetworkType>({
-    parse: (value) => {
-      switch (value) {
-        case "AMEX": {
-          return PrimerApi.commons.CardNetworkType.Amex;
-        }
-        case "DANKORT": {
-          return PrimerApi.commons.CardNetworkType.Dankort;
-        }
-        case "DINERS_CLUB": {
-          return PrimerApi.commons.CardNetworkType.DinersClub;
-        }
-        case "DISCOVER": {
-          return PrimerApi.commons.CardNetworkType.Discover;
-        }
-        case "ENROUTE": {
-          return PrimerApi.commons.CardNetworkType.Enroute;
-        }
-        case "ELO": {
-          return PrimerApi.commons.CardNetworkType.Elo;
-        }
-        case "HIPER": {
-          return PrimerApi.commons.CardNetworkType.Hiper;
-        }
-        case "INTERAC": {
-          return PrimerApi.commons.CardNetworkType.Interac;
-        }
-        case "JCB": {
-          return PrimerApi.commons.CardNetworkType.Jcb;
-        }
-        case "MAESTRO": {
-          return PrimerApi.commons.CardNetworkType.Maestro;
-        }
-        case "MASTERCARD": {
-          return PrimerApi.commons.CardNetworkType.Mastercard;
-        }
-        case "MIR": {
-          return PrimerApi.commons.CardNetworkType.Mir;
-        }
-        case "PRIVATE_LABEL": {
-          return PrimerApi.commons.CardNetworkType.PrivateLabel;
-        }
-        case "UNIONPAY": {
-          return PrimerApi.commons.CardNetworkType.Unionpay;
-        }
-        case "VISA": {
-          return PrimerApi.commons.CardNetworkType.Visa;
-        }
-        default: {
-          return {
-            value: value,
-            visit: (visitor) => visitor._other(value),
-          };
-        }
-      }
-    },
-    json: (value) => value.value,
+    parse: (value) => PrimerApi.commons.CardNetworkType._parse(value),
+    json: ({ value }) => value,
   });
 
 export declare namespace CardNetworkType {

@@ -1253,6 +1253,763 @@ export const CountryCode = {
   Za: _Za,
   Zm: _Zm,
   Zw: _Zw,
+  _parse: (value: string): CountryCode => {
+    switch (value) {
+      case "AW": {
+        return _Aw;
+      }
+      case "AF": {
+        return _Af;
+      }
+      case "AO": {
+        return _Ao;
+      }
+      case "AI": {
+        return _Ai;
+      }
+      case "AX": {
+        return _Ax;
+      }
+      case "AL": {
+        return _Al;
+      }
+      case "AD": {
+        return _Ad;
+      }
+      case "AE": {
+        return _Ae;
+      }
+      case "AR": {
+        return _Ar;
+      }
+      case "AM": {
+        return _Am;
+      }
+      case "AS": {
+        return _As;
+      }
+      case "AQ": {
+        return _Aq;
+      }
+      case "TF": {
+        return _Tf;
+      }
+      case "AG": {
+        return _Ag;
+      }
+      case "AU": {
+        return _Au;
+      }
+      case "AT": {
+        return _At;
+      }
+      case "AZ": {
+        return _Az;
+      }
+      case "BI": {
+        return _Bi;
+      }
+      case "BE": {
+        return _Be;
+      }
+      case "BJ": {
+        return _Bj;
+      }
+      case "BQ": {
+        return _Bq;
+      }
+      case "BF": {
+        return _Bf;
+      }
+      case "BD": {
+        return _Bd;
+      }
+      case "BG": {
+        return _Bg;
+      }
+      case "BH": {
+        return _Bh;
+      }
+      case "BS": {
+        return _Bs;
+      }
+      case "BA": {
+        return _Ba;
+      }
+      case "BL": {
+        return _Bl;
+      }
+      case "BY": {
+        return _By;
+      }
+      case "BZ": {
+        return _Bz;
+      }
+      case "BM": {
+        return _Bm;
+      }
+      case "BO": {
+        return _Bo;
+      }
+      case "BR": {
+        return _Br;
+      }
+      case "BB": {
+        return _Bb;
+      }
+      case "BN": {
+        return _Bn;
+      }
+      case "BT": {
+        return _Bt;
+      }
+      case "BV": {
+        return _Bv;
+      }
+      case "BW": {
+        return _Bw;
+      }
+      case "CF": {
+        return _Cf;
+      }
+      case "CA": {
+        return _Ca;
+      }
+      case "CC": {
+        return _Cc;
+      }
+      case "CH": {
+        return _Ch;
+      }
+      case "CL": {
+        return _Cl;
+      }
+      case "CN": {
+        return _Cn;
+      }
+      case "CI": {
+        return _Ci;
+      }
+      case "CM": {
+        return _Cm;
+      }
+      case "CD": {
+        return _Cd;
+      }
+      case "CG": {
+        return _Cg;
+      }
+      case "CK": {
+        return _Ck;
+      }
+      case "CO": {
+        return _Co;
+      }
+      case "KM": {
+        return _Km;
+      }
+      case "CV": {
+        return _Cv;
+      }
+      case "CR": {
+        return _Cr;
+      }
+      case "CU": {
+        return _Cu;
+      }
+      case "CW": {
+        return _Cw;
+      }
+      case "CX": {
+        return _Cx;
+      }
+      case "KY": {
+        return _Ky;
+      }
+      case "CY": {
+        return _Cy;
+      }
+      case "CZ": {
+        return _Cz;
+      }
+      case "DE": {
+        return _De;
+      }
+      case "DJ": {
+        return _Dj;
+      }
+      case "DM": {
+        return _Dm;
+      }
+      case "DK": {
+        return _Dk;
+      }
+      case "DO": {
+        return _Do;
+      }
+      case "DZ": {
+        return _Dz;
+      }
+      case "EC": {
+        return _Ec;
+      }
+      case "EG": {
+        return _Eg;
+      }
+      case "ER": {
+        return _Er;
+      }
+      case "EH": {
+        return _Eh;
+      }
+      case "ES": {
+        return _Es;
+      }
+      case "EE": {
+        return _Ee;
+      }
+      case "ET": {
+        return _Et;
+      }
+      case "FI": {
+        return _Fi;
+      }
+      case "FJ": {
+        return _Fj;
+      }
+      case "FK": {
+        return _Fk;
+      }
+      case "FR": {
+        return _Fr;
+      }
+      case "FO": {
+        return _Fo;
+      }
+      case "FM": {
+        return _Fm;
+      }
+      case "GA": {
+        return _Ga;
+      }
+      case "GB": {
+        return _Gb;
+      }
+      case "GE": {
+        return _Ge;
+      }
+      case "GG": {
+        return _Gg;
+      }
+      case "GH": {
+        return _Gh;
+      }
+      case "GI": {
+        return _Gi;
+      }
+      case "GN": {
+        return _Gn;
+      }
+      case "GP": {
+        return _Gp;
+      }
+      case "GM": {
+        return _Gm;
+      }
+      case "GW": {
+        return _Gw;
+      }
+      case "GQ": {
+        return _Gq;
+      }
+      case "GR": {
+        return _Gr;
+      }
+      case "GD": {
+        return _Gd;
+      }
+      case "GL": {
+        return _Gl;
+      }
+      case "GT": {
+        return _Gt;
+      }
+      case "GF": {
+        return _Gf;
+      }
+      case "GU": {
+        return _Gu;
+      }
+      case "GY": {
+        return _Gy;
+      }
+      case "HK": {
+        return _Hk;
+      }
+      case "HM": {
+        return _Hm;
+      }
+      case "HN": {
+        return _Hn;
+      }
+      case "HR": {
+        return _Hr;
+      }
+      case "HT": {
+        return _Ht;
+      }
+      case "HU": {
+        return _Hu;
+      }
+      case "ID": {
+        return _Id;
+      }
+      case "IM": {
+        return _Im;
+      }
+      case "IN": {
+        return _In;
+      }
+      case "IO": {
+        return _Io;
+      }
+      case "IE": {
+        return _Ie;
+      }
+      case "IR": {
+        return _Ir;
+      }
+      case "IQ": {
+        return _Iq;
+      }
+      case "IS": {
+        return _Is;
+      }
+      case "IL": {
+        return _Il;
+      }
+      case "IT": {
+        return _It;
+      }
+      case "JM": {
+        return _Jm;
+      }
+      case "JE": {
+        return _Je;
+      }
+      case "JO": {
+        return _Jo;
+      }
+      case "JP": {
+        return _Jp;
+      }
+      case "KZ": {
+        return _Kz;
+      }
+      case "KE": {
+        return _Ke;
+      }
+      case "KG": {
+        return _Kg;
+      }
+      case "KH": {
+        return _Kh;
+      }
+      case "KI": {
+        return _Ki;
+      }
+      case "KN": {
+        return _Kn;
+      }
+      case "KR": {
+        return _Kr;
+      }
+      case "KW": {
+        return _Kw;
+      }
+      case "LA": {
+        return _La;
+      }
+      case "LB": {
+        return _Lb;
+      }
+      case "LR": {
+        return _Lr;
+      }
+      case "LY": {
+        return _Ly;
+      }
+      case "LC": {
+        return _Lc;
+      }
+      case "LI": {
+        return _Li;
+      }
+      case "LK": {
+        return _Lk;
+      }
+      case "LS": {
+        return _Ls;
+      }
+      case "LT": {
+        return _Lt;
+      }
+      case "LU": {
+        return _Lu;
+      }
+      case "LV": {
+        return _Lv;
+      }
+      case "MO": {
+        return _Mo;
+      }
+      case "MF": {
+        return _Mf;
+      }
+      case "MA": {
+        return _Ma;
+      }
+      case "MC": {
+        return _Mc;
+      }
+      case "MD": {
+        return _Md;
+      }
+      case "MG": {
+        return _Mg;
+      }
+      case "MV": {
+        return _Mv;
+      }
+      case "MX": {
+        return _Mx;
+      }
+      case "MH": {
+        return _Mh;
+      }
+      case "MK": {
+        return _Mk;
+      }
+      case "ML": {
+        return _Ml;
+      }
+      case "MT": {
+        return _Mt;
+      }
+      case "MM": {
+        return _Mm;
+      }
+      case "ME": {
+        return _Me;
+      }
+      case "MN": {
+        return _Mn;
+      }
+      case "MP": {
+        return _Mp;
+      }
+      case "MZ": {
+        return _Mz;
+      }
+      case "MR": {
+        return _Mr;
+      }
+      case "MS": {
+        return _Ms;
+      }
+      case "MQ": {
+        return _Mq;
+      }
+      case "MU": {
+        return _Mu;
+      }
+      case "MW": {
+        return _Mw;
+      }
+      case "MY": {
+        return _My;
+      }
+      case "YT": {
+        return _Yt;
+      }
+      case "NA": {
+        return _Na;
+      }
+      case "NC": {
+        return _Nc;
+      }
+      case "NE": {
+        return _Ne;
+      }
+      case "NF": {
+        return _Nf;
+      }
+      case "NG": {
+        return _Ng;
+      }
+      case "NI": {
+        return _Ni;
+      }
+      case "NU": {
+        return _Nu;
+      }
+      case "NL": {
+        return _Nl;
+      }
+      case "NO": {
+        return _No;
+      }
+      case "NP": {
+        return _Np;
+      }
+      case "NR": {
+        return _Nr;
+      }
+      case "NZ": {
+        return _Nz;
+      }
+      case "OM": {
+        return _Om;
+      }
+      case "PK": {
+        return _Pk;
+      }
+      case "PA": {
+        return _Pa;
+      }
+      case "PN": {
+        return _Pn;
+      }
+      case "PE": {
+        return _Pe;
+      }
+      case "PH": {
+        return _Ph;
+      }
+      case "PW": {
+        return _Pw;
+      }
+      case "PG": {
+        return _Pg;
+      }
+      case "PL": {
+        return _Pl;
+      }
+      case "PR": {
+        return _Pr;
+      }
+      case "KP": {
+        return _Kp;
+      }
+      case "PT": {
+        return _Pt;
+      }
+      case "PY": {
+        return _Py;
+      }
+      case "PS": {
+        return _Ps;
+      }
+      case "PF": {
+        return _Pf;
+      }
+      case "QA": {
+        return _Qa;
+      }
+      case "RE": {
+        return _Re;
+      }
+      case "RO": {
+        return _Ro;
+      }
+      case "RU": {
+        return _Ru;
+      }
+      case "RW": {
+        return _Rw;
+      }
+      case "SA": {
+        return _Sa;
+      }
+      case "SD": {
+        return _Sd;
+      }
+      case "SN": {
+        return _Sn;
+      }
+      case "SG": {
+        return _Sg;
+      }
+      case "GS": {
+        return _Gs;
+      }
+      case "SH": {
+        return _Sh;
+      }
+      case "SJ": {
+        return _Sj;
+      }
+      case "SB": {
+        return _Sb;
+      }
+      case "SL": {
+        return _Sl;
+      }
+      case "SV": {
+        return _Sv;
+      }
+      case "SM": {
+        return _Sm;
+      }
+      case "SO": {
+        return _So;
+      }
+      case "PM": {
+        return _Pm;
+      }
+      case "RS": {
+        return _Rs;
+      }
+      case "SS": {
+        return _Ss;
+      }
+      case "ST": {
+        return _St;
+      }
+      case "SR": {
+        return _Sr;
+      }
+      case "SK": {
+        return _Sk;
+      }
+      case "SI": {
+        return _Si;
+      }
+      case "SE": {
+        return _Se;
+      }
+      case "SZ": {
+        return _Sz;
+      }
+      case "SX": {
+        return _Sx;
+      }
+      case "SC": {
+        return _Sc;
+      }
+      case "SY": {
+        return _Sy;
+      }
+      case "TC": {
+        return _Tc;
+      }
+      case "TD": {
+        return _Td;
+      }
+      case "TG": {
+        return _Tg;
+      }
+      case "TH": {
+        return _Th;
+      }
+      case "TJ": {
+        return _Tj;
+      }
+      case "TK": {
+        return _Tk;
+      }
+      case "TM": {
+        return _Tm;
+      }
+      case "TL": {
+        return _Tl;
+      }
+      case "TO": {
+        return _To;
+      }
+      case "TT": {
+        return _Tt;
+      }
+      case "TN": {
+        return _Tn;
+      }
+      case "TR": {
+        return _Tr;
+      }
+      case "TV": {
+        return _Tv;
+      }
+      case "TW": {
+        return _Tw;
+      }
+      case "TZ": {
+        return _Tz;
+      }
+      case "UG": {
+        return _Ug;
+      }
+      case "UA": {
+        return _Ua;
+      }
+      case "UM": {
+        return _Um;
+      }
+      case "UY": {
+        return _Uy;
+      }
+      case "US": {
+        return _Us;
+      }
+      case "UZ": {
+        return _Uz;
+      }
+      case "VA": {
+        return _Va;
+      }
+      case "VC": {
+        return _Vc;
+      }
+      case "VE": {
+        return _Ve;
+      }
+      case "VG": {
+        return _Vg;
+      }
+      case "VI": {
+        return _Vi;
+      }
+      case "VN": {
+        return _Vn;
+      }
+      case "VU": {
+        return _Vu;
+      }
+      case "WF": {
+        return _Wf;
+      }
+      case "WS": {
+        return _Ws;
+      }
+      case "YE": {
+        return _Ye;
+      }
+      case "ZA": {
+        return _Za;
+      }
+      case "ZM": {
+        return _Zm;
+      }
+      case "ZW": {
+        return _Zw;
+      }
+      default: {
+        return {
+          value: value as CountryCode.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace CountryCode {
@@ -1505,8 +2262,7 @@ export declare namespace CountryCode {
     | "YE"
     | "ZA"
     | "ZM"
-    | "ZW"
-    | string;
+    | "ZW";
 
   interface _Visitor<Result> {
     aw: () => Result;

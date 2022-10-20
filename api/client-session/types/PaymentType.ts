@@ -28,10 +28,32 @@ export const PaymentType = {
   Ecommerce: _Ecommerce,
   Subscription: _Subscription,
   Unscheduled: _Unscheduled,
+  _parse: (value: string): PaymentType => {
+    switch (value) {
+      case "FIRST_PAYMENT": {
+        return _FirstPayment;
+      }
+      case "ECOMMERCE": {
+        return _Ecommerce;
+      }
+      case "SUBSCRIPTION": {
+        return _Subscription;
+      }
+      case "UNSCHEDULED": {
+        return _Unscheduled;
+      }
+      default: {
+        return {
+          value: value as PaymentType.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace PaymentType {
-  type RawValue = "FIRST_PAYMENT" | "ECOMMERCE" | "SUBSCRIPTION" | "UNSCHEDULED" | string;
+  type RawValue = "FIRST_PAYMENT" | "ECOMMERCE" | "SUBSCRIPTION" | "UNSCHEDULED";
 
   interface _Visitor<Result> {
     firstPayment: () => Result;

@@ -9,23 +9,8 @@ export const StatusReasonDeclineType: core.schemas.Schema<
   StatusReasonDeclineType.Raw,
   PrimerApi.payments.StatusReasonDeclineType
 > = core.schemas.string().transform<PrimerApi.payments.StatusReasonDeclineType>({
-  parse: (value) => {
-    switch (value) {
-      case "SOFT_DECLINE": {
-        return PrimerApi.payments.StatusReasonDeclineType.SoftDecline;
-      }
-      case "HARD_DECLINE": {
-        return PrimerApi.payments.StatusReasonDeclineType.HardDecline;
-      }
-      default: {
-        return {
-          value: value,
-          visit: (visitor) => visitor._other(value),
-        };
-      }
-    }
-  },
-  json: (value) => value.value,
+  parse: (value) => PrimerApi.payments.StatusReasonDeclineType._parse(value),
+  json: ({ value }) => value,
 });
 
 export declare namespace StatusReasonDeclineType {

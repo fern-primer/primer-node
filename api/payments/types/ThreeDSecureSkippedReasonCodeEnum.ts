@@ -50,6 +50,40 @@ export const ThreeDSecureSkippedReasonCodeEnum = {
   ThreeDsServerError: _ThreeDsServerError,
   AcquirerNotConfigured: _AcquirerNotConfigured,
   AcquirerNotParticipating: _AcquirerNotParticipating,
+  _parse: (value: string): ThreeDSecureSkippedReasonCodeEnum => {
+    switch (value) {
+      case "GATEWAY_UNAVAILABLE": {
+        return _GatewayUnavailable;
+      }
+      case "DISABLED_BY_MERCHANT": {
+        return _DisabledByMerchant;
+      }
+      case "NOT_SUPPORTED_BY_ISSUER": {
+        return _NotSupportedByIssuer;
+      }
+      case "FAILED_TO_NEGOTIATE": {
+        return _FailedToNegotiate;
+      }
+      case "UNKNOWN_ACS_RESPONSE": {
+        return _UnknownAcsResponse;
+      }
+      case "3DS_SERVER_ERROR": {
+        return _ThreeDsServerError;
+      }
+      case "ACQUIRER_NOT_CONFIGURED": {
+        return _AcquirerNotConfigured;
+      }
+      case "ACQUIRER_NOT_PARTICIPATING": {
+        return _AcquirerNotParticipating;
+      }
+      default: {
+        return {
+          value: value as ThreeDSecureSkippedReasonCodeEnum.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace ThreeDSecureSkippedReasonCodeEnum {
@@ -61,8 +95,7 @@ export declare namespace ThreeDSecureSkippedReasonCodeEnum {
     | "UNKNOWN_ACS_RESPONSE"
     | "3DS_SERVER_ERROR"
     | "ACQUIRER_NOT_CONFIGURED"
-    | "ACQUIRER_NOT_PARTICIPATING"
-    | string;
+    | "ACQUIRER_NOT_PARTICIPATING";
 
   interface _Visitor<Result> {
     gatewayUnavailable: () => Result;

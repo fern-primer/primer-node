@@ -23,10 +23,29 @@ export const RegionalRestriction = {
   DomesticUseOnly: _DomesticUseOnly,
   None: _None,
   Unknown: _Unknown,
+  _parse: (value: string): RegionalRestriction => {
+    switch (value) {
+      case "DOMESTIC_USE_ONLY": {
+        return _DomesticUseOnly;
+      }
+      case "NONE": {
+        return _None;
+      }
+      case "UNKNOWN": {
+        return _Unknown;
+      }
+      default: {
+        return {
+          value: value as RegionalRestriction.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace RegionalRestriction {
-  type RawValue = "DOMESTIC_USE_ONLY" | "NONE" | "UNKNOWN" | string;
+  type RawValue = "DOMESTIC_USE_ONLY" | "NONE" | "UNKNOWN";
 
   interface _Visitor<Result> {
     domesticUseOnly: () => Result;

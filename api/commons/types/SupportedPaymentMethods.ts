@@ -178,6 +178,115 @@ export const SupportedPaymentMethods = {
   BuckarooGiropay: _BuckarooGiropay,
   BuckarooEps: _BuckarooEps,
   XfersPaynow: _XfersPaynow,
+  _parse: (value: string): SupportedPaymentMethods => {
+    switch (value) {
+      case "PAYMENT_CARD": {
+        return _PaymentCard;
+      }
+      case "GOOGLE_PAY": {
+        return _GooglePay;
+      }
+      case "APPLE_PAY": {
+        return _ApplePay;
+      }
+      case "PAYPAL": {
+        return _Paypal;
+      }
+      case "GOCARDLESS": {
+        return _Gocardless;
+      }
+      case "KLARNA": {
+        return _Klarna;
+      }
+      case "APAYA": {
+        return _Apaya;
+      }
+      case "HOOLAH": {
+        return _Hoolah;
+      }
+      case "ATOME": {
+        return _Atome;
+      }
+      case "PAY_NL_IDEAL": {
+        return _PayNlIdeal;
+      }
+      case "PAY_NL_BANCONTACT": {
+        return _PayNlBancontact;
+      }
+      case "PAY_NL_DIRECT_DEBIT": {
+        return _PayNlDirectDebit;
+      }
+      case "PAY_NL_SOFORT_BANKING": {
+        return _PayNlSofortBanking;
+      }
+      case "PAY_NL_PAYPAL": {
+        return _PayNlPaypal;
+      }
+      case "PAY_NL_PAYCONIQ": {
+        return _PayNlPayconiq;
+      }
+      case "PAY_NL_GIROPAY": {
+        return _PayNlGiropay;
+      }
+      case "ADYEN_SOFORT": {
+        return _AdyenSofort;
+      }
+      case "ADYEN_TWINT": {
+        return _AdyenTwint;
+      }
+      case "ADYEN_GIROPAY": {
+        return _AdyenGiropay;
+      }
+      case "ADYEN_TRUSTLY": {
+        return _AdyenTrustly;
+      }
+      case "ADYEN_ALIPAY": {
+        return _AdyenAlipay;
+      }
+      case "ADYEN_MOBILEPAY": {
+        return _AdyenMobilepay;
+      }
+      case "ADYEN_VIPPS": {
+        return _AdyenVipps;
+      }
+      case "ADYEN_DOTPAY": {
+        return _AdyenDotpay;
+      }
+      case "ADYEN_IDEAL": {
+        return _AdyenIdeal;
+      }
+      case "MOLLIE_IDEAL": {
+        return _MollieIdeal;
+      }
+      case "MOLLIE_BANCONTACT": {
+        return _MollieBancontact;
+      }
+      case "BUCKAROO_IDEAL": {
+        return _BuckarooIdeal;
+      }
+      case "BUCKAROO_BANCONTACT": {
+        return _BuckarooBancontact;
+      }
+      case "BUCKAROO_SOFORT": {
+        return _BuckarooSofort;
+      }
+      case "BUCKAROO_GIROPAY": {
+        return _BuckarooGiropay;
+      }
+      case "BUCKAROO_EPS": {
+        return _BuckarooEps;
+      }
+      case "XFERS_PAYNOW": {
+        return _XfersPaynow;
+      }
+      default: {
+        return {
+          value: value as SupportedPaymentMethods.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace SupportedPaymentMethods {
@@ -214,8 +323,7 @@ export declare namespace SupportedPaymentMethods {
     | "BUCKAROO_SOFORT"
     | "BUCKAROO_GIROPAY"
     | "BUCKAROO_EPS"
-    | "XFERS_PAYNOW"
-    | string;
+    | "XFERS_PAYNOW";
 
   interface _Visitor<Result> {
     paymentCard: () => Result;

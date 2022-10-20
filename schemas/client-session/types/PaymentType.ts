@@ -8,29 +8,8 @@ import * as core from "../../../core";
 export const PaymentType: core.schemas.Schema<PaymentType.Raw, PrimerApi.clientSession.PaymentType> = core.schemas
   .string()
   .transform<PrimerApi.clientSession.PaymentType>({
-    parse: (value) => {
-      switch (value) {
-        case "FIRST_PAYMENT": {
-          return PrimerApi.clientSession.PaymentType.FirstPayment;
-        }
-        case "ECOMMERCE": {
-          return PrimerApi.clientSession.PaymentType.Ecommerce;
-        }
-        case "SUBSCRIPTION": {
-          return PrimerApi.clientSession.PaymentType.Subscription;
-        }
-        case "UNSCHEDULED": {
-          return PrimerApi.clientSession.PaymentType.Unscheduled;
-        }
-        default: {
-          return {
-            value: value,
-            visit: (visitor) => visitor._other(value),
-          };
-        }
-      }
-    },
-    json: (value) => value.value,
+    parse: (value) => PrimerApi.clientSession.PaymentType._parse(value),
+    json: ({ value }) => value,
   });
 
 export declare namespace PaymentType {

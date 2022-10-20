@@ -7,29 +7,8 @@ import * as core from "../../../core";
 
 export const ProductUsageType: core.schemas.Schema<ProductUsageType.Raw, PrimerApi.payments.ProductUsageType> =
   core.schemas.string().transform<PrimerApi.payments.ProductUsageType>({
-    parse: (value) => {
-      switch (value) {
-        case "CONSUMER": {
-          return PrimerApi.payments.ProductUsageType.Consumer;
-        }
-        case "BUSINESS": {
-          return PrimerApi.payments.ProductUsageType.Business;
-        }
-        case "GOVERNMENT": {
-          return PrimerApi.payments.ProductUsageType.Government;
-        }
-        case "UNKNOWN": {
-          return PrimerApi.payments.ProductUsageType.Unknown;
-        }
-        default: {
-          return {
-            value: value,
-            visit: (visitor) => visitor._other(value),
-          };
-        }
-      }
-    },
-    json: (value) => value.value,
+    parse: (value) => PrimerApi.payments.ProductUsageType._parse(value),
+    json: ({ value }) => value,
   });
 
 export declare namespace ProductUsageType {

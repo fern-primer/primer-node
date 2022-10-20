@@ -18,10 +18,26 @@ const _Refund: TransactionType<"REFUND"> = {
 export const TransactionType = {
   Sale: _Sale,
   Refund: _Refund,
+  _parse: (value: string): TransactionType => {
+    switch (value) {
+      case "SALE": {
+        return _Sale;
+      }
+      case "REFUND": {
+        return _Refund;
+      }
+      default: {
+        return {
+          value: value as TransactionType.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace TransactionType {
-  type RawValue = "SALE" | "REFUND" | string;
+  type RawValue = "SALE" | "REFUND";
 
   interface _Visitor<Result> {
     sale: () => Result;

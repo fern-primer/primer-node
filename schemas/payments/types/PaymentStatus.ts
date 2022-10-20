@@ -8,41 +8,8 @@ import * as core from "../../../core";
 export const PaymentStatus: core.schemas.Schema<PaymentStatus.Raw, PrimerApi.payments.PaymentStatus> = core.schemas
   .string()
   .transform<PrimerApi.payments.PaymentStatus>({
-    parse: (value) => {
-      switch (value) {
-        case "PENDING": {
-          return PrimerApi.payments.PaymentStatus.Pending;
-        }
-        case "FAILED": {
-          return PrimerApi.payments.PaymentStatus.Failed;
-        }
-        case "AUTHORIZED": {
-          return PrimerApi.payments.PaymentStatus.Authorized;
-        }
-        case "SETTLING": {
-          return PrimerApi.payments.PaymentStatus.Settling;
-        }
-        case "PARTIALLY_SETTLED": {
-          return PrimerApi.payments.PaymentStatus.PartiallySettled;
-        }
-        case "SETTLED": {
-          return PrimerApi.payments.PaymentStatus.Settled;
-        }
-        case "DECLINED": {
-          return PrimerApi.payments.PaymentStatus.Declined;
-        }
-        case "CANCELLED": {
-          return PrimerApi.payments.PaymentStatus.Cancelled;
-        }
-        default: {
-          return {
-            value: value,
-            visit: (visitor) => visitor._other(value),
-          };
-        }
-      }
-    },
-    json: (value) => value.value,
+    parse: (value) => PrimerApi.payments.PaymentStatus._parse(value),
+    json: ({ value }) => value,
   });
 
 export declare namespace PaymentStatus {

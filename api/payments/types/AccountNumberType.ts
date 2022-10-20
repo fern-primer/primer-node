@@ -23,10 +23,29 @@ export const AccountNumberType = {
   PrimaryAccountNumber: _PrimaryAccountNumber,
   NetworkToken: _NetworkToken,
   Unknown: _Unknown,
+  _parse: (value: string): AccountNumberType => {
+    switch (value) {
+      case "PRIMARY_ACCOUNT_NUMBER": {
+        return _PrimaryAccountNumber;
+      }
+      case "NETWORK_TOKEN": {
+        return _NetworkToken;
+      }
+      case "UNKNOWN": {
+        return _Unknown;
+      }
+      default: {
+        return {
+          value: value as AccountNumberType.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace AccountNumberType {
-  type RawValue = "PRIMARY_ACCOUNT_NUMBER" | "NETWORK_TOKEN" | "UNKNOWN" | string;
+  type RawValue = "PRIMARY_ACCOUNT_NUMBER" | "NETWORK_TOKEN" | "UNKNOWN";
 
   interface _Visitor<Result> {
     primaryAccountNumber: () => Result;

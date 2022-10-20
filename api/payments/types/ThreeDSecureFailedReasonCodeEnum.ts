@@ -90,6 +90,64 @@ export const ThreeDSecureFailedReasonCodeEnum = {
   TransactionTimedOutAtTheAcs: _TransactionTimedOutAtTheAcs,
   LowConfidence: _LowConfidence,
   MediumConfidence: _MediumConfidence,
+  _parse: (value: string): ThreeDSecureFailedReasonCodeEnum => {
+    switch (value) {
+      case "01": {
+        return _CardAuthenticationFailed;
+      }
+      case "02": {
+        return _UnknownDevice;
+      }
+      case "03": {
+        return _UnsupportedDevice;
+      }
+      case "04": {
+        return _ExceedsAuthenticationFrequencyLimit;
+      }
+      case "05": {
+        return _ExpiredCard;
+      }
+      case "06": {
+        return _InvalidCardNumber;
+      }
+      case "07": {
+        return _InvalidTransaction;
+      }
+      case "08": {
+        return _NoCardRecord;
+      }
+      case "09": {
+        return _SecurityFailure;
+      }
+      case "10": {
+        return _StolenCard;
+      }
+      case "11": {
+        return _SuspectedFraud;
+      }
+      case "12": {
+        return _TransactionNotPermittedToCardholder;
+      }
+      case "13": {
+        return _CardholderNotEnrolledInService;
+      }
+      case "14": {
+        return _TransactionTimedOutAtTheAcs;
+      }
+      case "15": {
+        return _LowConfidence;
+      }
+      case "16": {
+        return _MediumConfidence;
+      }
+      default: {
+        return {
+          value: value as ThreeDSecureFailedReasonCodeEnum.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace ThreeDSecureFailedReasonCodeEnum {
@@ -109,8 +167,7 @@ export declare namespace ThreeDSecureFailedReasonCodeEnum {
     | "13"
     | "14"
     | "15"
-    | "16"
-    | string;
+    | "16";
 
   interface _Visitor<Result> {
     cardAuthenticationFailed: () => Result;

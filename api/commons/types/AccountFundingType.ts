@@ -38,10 +38,38 @@ export const AccountFundingType = {
   Charge: _Charge,
   DeferredDebit: _DeferredDebit,
   Unknown: _Unknown,
+  _parse: (value: string): AccountFundingType => {
+    switch (value) {
+      case "CREDIT": {
+        return _Credit;
+      }
+      case "DEBIT": {
+        return _Debit;
+      }
+      case "PREPAID": {
+        return _Prepaid;
+      }
+      case "CHARGE": {
+        return _Charge;
+      }
+      case "DEFERRED_DEBIT": {
+        return _DeferredDebit;
+      }
+      case "UNKNOWN": {
+        return _Unknown;
+      }
+      default: {
+        return {
+          value: value as AccountFundingType.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace AccountFundingType {
-  type RawValue = "CREDIT" | "DEBIT" | "PREPAID" | "CHARGE" | "DEFERRED_DEBIT" | "UNKNOWN" | string;
+  type RawValue = "CREDIT" | "DEBIT" | "PREPAID" | "CHARGE" | "DEFERRED_DEBIT" | "UNKNOWN";
 
   interface _Visitor<Result> {
     credit: () => Result;

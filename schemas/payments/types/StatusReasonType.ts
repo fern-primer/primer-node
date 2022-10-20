@@ -7,26 +7,8 @@ import * as core from "../../../core";
 
 export const StatusReasonType: core.schemas.Schema<StatusReasonType.Raw, PrimerApi.payments.StatusReasonType> =
   core.schemas.string().transform<PrimerApi.payments.StatusReasonType>({
-    parse: (value) => {
-      switch (value) {
-        case "APPLICATION_ERROR": {
-          return PrimerApi.payments.StatusReasonType.ApplicationError;
-        }
-        case "GATEWAY_REJECTED": {
-          return PrimerApi.payments.StatusReasonType.GatewayRejected;
-        }
-        case "ISSUER_DECLINED": {
-          return PrimerApi.payments.StatusReasonType.IssuerDeclined;
-        }
-        default: {
-          return {
-            value: value,
-            visit: (visitor) => visitor._other(value),
-          };
-        }
-      }
-    },
-    json: (value) => value.value,
+    parse: (value) => PrimerApi.payments.StatusReasonType._parse(value),
+    json: ({ value }) => value,
   });
 
 export declare namespace StatusReasonType {

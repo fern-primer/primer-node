@@ -30,10 +30,32 @@ export const PrepaidReloadableIndicator = {
   NonReloadable: _NonReloadable,
   NotApplicable: _NotApplicable,
   Unknown: _Unknown,
+  _parse: (value: string): PrepaidReloadableIndicator => {
+    switch (value) {
+      case "RELOADABLE": {
+        return _Reloadable;
+      }
+      case "NON_RELOADABLE": {
+        return _NonReloadable;
+      }
+      case "NOT_APPLICABLE": {
+        return _NotApplicable;
+      }
+      case "UNKNOWN": {
+        return _Unknown;
+      }
+      default: {
+        return {
+          value: value as PrepaidReloadableIndicator.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace PrepaidReloadableIndicator {
-  type RawValue = "RELOADABLE" | "NON_RELOADABLE" | "NOT_APPLICABLE" | "UNKNOWN" | string;
+  type RawValue = "RELOADABLE" | "NON_RELOADABLE" | "NOT_APPLICABLE" | "UNKNOWN";
 
   interface _Visitor<Result> {
     reloadable: () => Result;

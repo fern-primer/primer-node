@@ -102,6 +102,7 @@ export class Client implements Client {
       method: "GET",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+        "X-Idempotency-Key": request.xIdempotencyKey,
       },
       queryParameters: queryParameters,
     });
@@ -154,6 +155,7 @@ export class Client implements Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+        "X-Idempotency-Key": request.xIdempotencyKey,
       },
       body: schemas.payments.CapturePaymentRequest.json(request._body),
     });
@@ -180,6 +182,7 @@ export class Client implements Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+        "X-Idempotency-Key": request.xIdempotencyKey,
       },
       body: schemas.payments.CancelPaymentRequest.json(request._body),
     });
@@ -206,6 +209,7 @@ export class Client implements Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+        "X-Idempotency-Key": request.xIdempotencyKey,
       },
       body: schemas.payments.RefundPaymentRequest.json(request._body),
     });
@@ -232,6 +236,7 @@ export class Client implements Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+        "X-Idempotency-Key": request.xIdempotencyKey,
       },
       body: schemas.payments.ResumePaymentRequest.json(request._body),
     });
@@ -258,6 +263,7 @@ export class Client implements Client {
       method: "GET",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+        "X-Idempotency-Key": request.xIdempotencyKey,
       },
     });
     if (response.ok) {

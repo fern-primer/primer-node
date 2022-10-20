@@ -41,6 +41,7 @@ export interface Request {
   limit?: number;
   /** If results are paginated, pass the nextCursor to access next page. */
   cursor?: number;
+  xIdempotencyKey?: string;
 }
 
 export type Response = core.APIResponse<PrimerApi.payments.PaymentsData, PrimerApi.payments.search.Error>;

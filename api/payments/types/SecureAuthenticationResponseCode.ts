@@ -35,10 +35,35 @@ export const SecureAuthenticationResponseCode = {
   AuthSuccess: _AuthSuccess,
   AuthFailed: _AuthFailed,
   ChallengeMethod: _ChallengeMethod,
+  _parse: (value: string): SecureAuthenticationResponseCode => {
+    switch (value) {
+      case "NOT_PERFORMED": {
+        return _NotPerformed;
+      }
+      case "SKIPPED": {
+        return _Skipped;
+      }
+      case "AUTH_SUCCESS": {
+        return _AuthSuccess;
+      }
+      case "AUTH_FAILED": {
+        return _AuthFailed;
+      }
+      case "CHALLENGE_METHOD": {
+        return _ChallengeMethod;
+      }
+      default: {
+        return {
+          value: value as SecureAuthenticationResponseCode.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace SecureAuthenticationResponseCode {
-  type RawValue = "NOT_PERFORMED" | "SKIPPED" | "AUTH_SUCCESS" | "AUTH_FAILED" | "CHALLENGE_METHOD" | string;
+  type RawValue = "NOT_PERFORMED" | "SKIPPED" | "AUTH_SUCCESS" | "AUTH_FAILED" | "CHALLENGE_METHOD";
 
   interface _Visitor<Result> {
     notPerformed: () => Result;

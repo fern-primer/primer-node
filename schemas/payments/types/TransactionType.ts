@@ -7,23 +7,8 @@ import * as core from "../../../core";
 
 export const TransactionType: core.schemas.Schema<TransactionType.Raw, PrimerApi.payments.TransactionType> =
   core.schemas.string().transform<PrimerApi.payments.TransactionType>({
-    parse: (value) => {
-      switch (value) {
-        case "SALE": {
-          return PrimerApi.payments.TransactionType.Sale;
-        }
-        case "REFUND": {
-          return PrimerApi.payments.TransactionType.Refund;
-        }
-        default: {
-          return {
-            value: value,
-            visit: (visitor) => visitor._other(value),
-          };
-        }
-      }
-    },
-    json: (value) => value.value,
+    parse: (value) => PrimerApi.payments.TransactionType._parse(value),
+    json: ({ value }) => value,
   });
 
 export declare namespace TransactionType {

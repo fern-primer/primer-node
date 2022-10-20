@@ -68,6 +68,52 @@ export const StatusReasonCode = {
   WithdrawalLimitExceeded: _WithdrawalLimitExceeded,
   IssuerTemporarilyUnavailable: _IssuerTemporarilyUnavailable,
   AuthenticationRequired: _AuthenticationRequired,
+  _parse: (value: string): StatusReasonCode => {
+    switch (value) {
+      case "ERROR": {
+        return _Error;
+      }
+      case "INVALID_CARD_NUMBER": {
+        return _InvalidCardNumber;
+      }
+      case "EXPIRED_CARD": {
+        return _ExpiredCard;
+      }
+      case "LOST_OR_STOLEN_CARD": {
+        return _LostOrStolenCard;
+      }
+      case "SUSPECTED_FRAUD": {
+        return _SuspectedFraud;
+      }
+      case "UNKNOWN_DECLINED": {
+        return _UnknownDeclined;
+      }
+      case "REFER_TO_CARD_ISSUER": {
+        return _ReferToCardIssuer;
+      }
+      case "DO_NOT_HONOR": {
+        return _DoNotHonor;
+      }
+      case "INSUFFICIENT_FUNDS": {
+        return _InsufficientFunds;
+      }
+      case "WITHDRAWAL_LIMIT_EXCEEDED": {
+        return _WithdrawalLimitExceeded;
+      }
+      case "ISSUER_TEMPORARILY_UNAVAILABLE": {
+        return _IssuerTemporarilyUnavailable;
+      }
+      case "AUTHENTICATION_REQUIRED": {
+        return _AuthenticationRequired;
+      }
+      default: {
+        return {
+          value: value as StatusReasonCode.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace StatusReasonCode {
@@ -83,8 +129,7 @@ export declare namespace StatusReasonCode {
     | "INSUFFICIENT_FUNDS"
     | "WITHDRAWAL_LIMIT_EXCEEDED"
     | "ISSUER_TEMPORARILY_UNAVAILABLE"
-    | "AUTHENTICATION_REQUIRED"
-    | string;
+    | "AUTHENTICATION_REQUIRED";
 
   interface _Visitor<Result> {
     error: () => Result;
