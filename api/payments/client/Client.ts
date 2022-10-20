@@ -102,7 +102,7 @@ export class Client implements Client {
       method: "GET",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
-        "X-Idempotency-Key": request.xIdempotencyKey,
+        "X-Idempotency-Key": request.idempotencyKey,
       },
       queryParameters: queryParameters,
     });
@@ -155,7 +155,7 @@ export class Client implements Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
-        "X-Idempotency-Key": request.xIdempotencyKey,
+        "X-Idempotency-Key": request.idempotencyKey,
       },
       body: schemas.payments.CapturePaymentRequest.json(request._body),
     });
@@ -182,7 +182,7 @@ export class Client implements Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
-        "X-Idempotency-Key": request.xIdempotencyKey,
+        "X-Idempotency-Key": request.idempotencyKey,
       },
       body: schemas.payments.CancelPaymentRequest.json(request._body),
     });
@@ -209,7 +209,7 @@ export class Client implements Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
-        "X-Idempotency-Key": request.xIdempotencyKey,
+        "X-Idempotency-Key": request.idempotencyKey,
       },
       body: schemas.payments.RefundPaymentRequest.json(request._body),
     });
@@ -236,7 +236,7 @@ export class Client implements Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
-        "X-Idempotency-Key": request.xIdempotencyKey,
+        "X-Idempotency-Key": request.idempotencyKey,
       },
       body: schemas.payments.ResumePaymentRequest.json(request._body),
     });
@@ -263,7 +263,7 @@ export class Client implements Client {
       method: "GET",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.apiKey),
-        "X-Idempotency-Key": request.xIdempotencyKey,
+        "X-Idempotency-Key": request.idempotencyKey,
       },
     });
     if (response.ok) {

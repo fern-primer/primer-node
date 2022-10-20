@@ -9,7 +9,7 @@ export interface Request {
   apiKey?: core.Supplier<string>;
   /** ID of the payment to resume. */
   id: PrimerApi.payments.PaymentId;
-  xIdempotencyKey?: string;
+  idempotencyKey?: string;
   _body: PrimerApi.payments.ResumePaymentRequest;
 }
 
