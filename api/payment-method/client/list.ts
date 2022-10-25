@@ -9,6 +9,7 @@ export interface Request {
   apiKey?: core.Supplier<string>;
   /** Return payment methods for this customer ID. */
   customerId: PrimerApi.commons.CustomerId;
+  xIdempotencyKey?: string;
 }
 
 export type Response = core.APIResponse<

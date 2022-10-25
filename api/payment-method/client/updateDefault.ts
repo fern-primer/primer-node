@@ -9,6 +9,7 @@ export interface Request {
   apiKey?: core.Supplier<string>;
   /** Saved payment method token to set to default. */
   paymentMethodToken: string;
+  xIdempotencyKey?: string;
 }
 
 export type Response = core.APIResponse<

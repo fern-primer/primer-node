@@ -9,6 +9,7 @@ export interface Request {
   apiKey?: core.Supplier<string>;
   /** Payment method token to store. */
   paymentMethodToken: string;
+  xIdempotencyKey?: string;
   _body: PrimerApi.paymentMethod.SavePaymentMethodTokenRequest;
 }
 

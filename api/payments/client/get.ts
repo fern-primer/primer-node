@@ -9,7 +9,7 @@ export interface Request {
   apiKey?: core.Supplier<string>;
   /** ID of the payment to retrieve. */
   id: PrimerApi.payments.PaymentId;
-  idempotencyKey?: string;
+  xIdempotencyKey?: string;
 }
 
 export type Response = core.APIResponse<PrimerApi.payments.PaymentResponse, PrimerApi.payments.get.Error>;
