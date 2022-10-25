@@ -2,14 +2,12 @@
     "name": "@fern-api/primer",
     "version": "0.0.11",
     "repository": "https://github.com/fern-primer/primer-node",
-    "main": "./index.js",
-    "types": "./index.d.ts",
+    "main": "./src/index.js",
+    "types": "./src/index.d.ts",
     "files": [
-        "/api/**/*.{js,js.map,d.ts}",
-        "/schemas/**/*.{js,js.map,d.ts}",
-        "/core/**/*.{js,js.map,d.ts}",
-        "/index.{js,js.map,d.ts}"
+        "./src"
     ],
+    "exports": "./src",
     "scripts": {
         "format": "prettier --write --print-width 120 '**/*.ts'",
         "build": "esbuild $(find . -name '*.ts' -not -path './node_modules/*') --format=cjs --sourcemap --outdir=. && tsc"
