@@ -1,24 +1,31 @@
 {
     "name": "@fern-api/primer",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "repository": "https://github.com/fern-primer/primer-node",
-    "main": "./src/index.js",
-    "types": "./src/index.d.ts",
     "files": [
-        "./src"
+        "core",
+        "resources",
+        "serialization",
+        "client",
+        "*.{js,js.map,d.ts}"
     ],
-    "exports": "./src",
+    "main": "./index.js",
+    "types": "./index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./index.js",
+            "import": "./index.js",
+            "types": "./index.d.ts"
+        }
+    },
     "scripts": {
-        "format": "prettier --write --print-width 120 '**/*.ts'",
-        "build": "esbuild $(find . -name '*.ts' -not -path './node_modules/*') --format=cjs --sourcemap --outdir=. && tsc"
+        "format": "prettier --write --print-width 120 'src/**/*.ts'",
+        "build": "esbuild $(find src -name '*.ts') --format=cjs --sourcemap --outdir=. && tsc"
     },
     "dependencies": {
         "@types/url-join": "4.0.1",
         "axios": "^0.27.2",
         "url-join": "4.0.1"
-    },
-    "peerDependencies": {
-        "axios": "*"
     },
     "devDependencies": {
         "@types/node": "17.0.33",
