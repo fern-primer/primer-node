@@ -1,5 +1,5 @@
-import { PrimerApi } from "..";
-
+import { PrimerApi, PrimerApiClient } from "@fern-api/primer";
+import { Environment } from "@fern-api/primer/environments";
 void main();
 
 async function main() {
@@ -9,9 +9,11 @@ async function main() {
     return;
   }
 
-  const primer = new PrimerApi.Client({
-    _origin: "https://api.sandbox.primer.io",
-    apiKey: primerToken,
+  const primer = new PrimerApiClient({
+    environment: Environment.Sandbox,
+    auth: {
+      apiKey: primerToken,
+    },
   });
 
   const createResponse = await primer.clientSession.create({

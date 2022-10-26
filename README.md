@@ -11,11 +11,12 @@ API documentation is available at https://apiref.primer.io/reference.
 ## Usage
 
 ```typescript
-import { PrimerApi } from "primer";
+import { PrimerApi, PrimerApiClient } from "@fern-api/primer";
 
-const primer = new PrimerApi.Client({
-  _origin: "https://api.sandbox.primer.io",
-  apiKey: process.env.PRIMER_TOKEN,
+const primer = new PrimerApiClient({
+  auth: {
+    apiKey: primerToken,
+  },
 });
 
 const createClientResponse = await primer.clientSession.create({
