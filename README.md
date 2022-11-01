@@ -10,6 +10,8 @@ API documentation is available at https://apiref.primer.io/reference.
 
 ## Usage
 
+Check out the sample app in your browser [here](https://stackblitz.com/edit/primer-typescript-example-app?file=app.ts&view=editor) using StackBlitz.
+
 ```typescript
 import { PrimerApi, PrimerApiClient } from "@fern-api/primer";
 
