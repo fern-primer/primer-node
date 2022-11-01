@@ -4,8 +4,8 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { Client as ClientSessionClient } from "./resources/client-session/client/Client";
-import { Client as PaymentMethodClient } from "./resources/payment-method/client/Client";
+import { Client as ClientSessionClient } from "./resources/clientSession/client/Client";
+import { Client as PaymentMethodClient } from "./resources/paymentMethod/client/Client";
 import { Client as PaymentsClient } from "./resources/payments/client/Client";
 
 export declare namespace PrimerApiClient {
