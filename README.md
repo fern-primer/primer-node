@@ -18,6 +18,7 @@ import { PrimerApiClient } from '@fern-api/primer';
 const primerToken = 'abc123';
 const primer = new PrimerApiClient({
   auth: {
+    environment: 'Sandbox',
     apiKey: primerToken,
   },
 });
@@ -28,18 +29,6 @@ const createClientResponse = await primer.clientSession.create({
 });
 
 console.log('Received response from Primer!', createClientResponse);
-```
-
-## Sample App
-
-Checkout the [sample app](.sample-app/app.ts) which consumes this SDK!
-
-```bash
-export PRIMER_TOKEN=...
-
-cd .sample-app
-yarn install
-yarn start
 ```
 
 ## SDK Examples
