@@ -13,8 +13,9 @@ API documentation is available at https://apiref.primer.io/reference.
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-o7urjj?file=app.ts&view=editor)
 
 ```typescript
-import { PrimerApi, PrimerApiClient } from "@fern-api/primer";
+import { PrimerApiClient } from '@fern-api/primer';
 
+const primerToken = 'abc123';
 const primer = new PrimerApiClient({
   auth: {
     apiKey: primerToken,
@@ -22,15 +23,11 @@ const primer = new PrimerApiClient({
 });
 
 const createClientResponse = await primer.clientSession.create({
-  orderId: "my-order-id",
+  orderId: 'my-order-id',
   amount: 200,
 });
 
-if (!createClientResponse.ok) {
-  throw new Error(createClientResponse.error.errorName);
-}
-
-console.log(createClientResponse.body.clientToken);
+console.log('Received response from Primer!', createClientResponse);
 ```
 
 ## Sample App
