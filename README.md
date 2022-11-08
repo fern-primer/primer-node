@@ -17,6 +17,7 @@ import { PrimerApiClient } from '@fern-api/primer';
 
 const primerToken = 'abc123';
 const primer = new PrimerApiClient({
+  apiVersion: '2.2',
   auth: {
     environment: 'Sandbox',
     apiKey: primerToken,
