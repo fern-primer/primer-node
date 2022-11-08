@@ -14,6 +14,7 @@ export declare namespace Client {
     auth?: {
       apiKey?: core.Supplier<string>;
     };
+    apiVersion: string;
   }
 }
 
@@ -31,6 +32,7 @@ export class Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
       },
       body: serializers.paymentMethod.SavePaymentMethodTokenRequest.json(request._body),
     });
@@ -61,6 +63,7 @@ export class Client {
       method: "GET",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
       },
       queryParameters: queryParameters,
     });
@@ -94,6 +97,7 @@ export class Client {
       method: "DELETE",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
       },
     });
     if (response.ok) {
@@ -126,6 +130,7 @@ export class Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
       },
     });
     if (response.ok) {

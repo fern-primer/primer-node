@@ -14,6 +14,7 @@ export declare namespace PrimerApiClient {
     auth?: {
       apiKey?: core.Supplier<string>;
     };
+    apiVersion: string;
   }
 }
 

@@ -14,6 +14,7 @@ export declare namespace Client {
     auth?: {
       apiKey?: core.Supplier<string>;
     };
+    apiVersion: string;
   }
 }
 
@@ -95,6 +96,7 @@ export class Client {
       method: "GET",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
         "X-Idempotency-Key": request.idempotencyKey,
       },
       queryParameters: queryParameters,
@@ -122,6 +124,7 @@ export class Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
       },
       body: serializers.payments.CreatePaymentRequest.json(request),
     });
@@ -148,6 +151,7 @@ export class Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
         "X-Idempotency-Key": request.idempotencyKey,
       },
       body: serializers.payments.CapturePaymentRequest.json(request._body),
@@ -175,6 +179,7 @@ export class Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
         "X-Idempotency-Key": request.idempotencyKey,
       },
       body: serializers.payments.CancelPaymentRequest.json(request._body),
@@ -202,6 +207,7 @@ export class Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
         "X-Idempotency-Key": request.idempotencyKey,
       },
       body: serializers.payments.RefundPaymentRequest.json(request._body),
@@ -229,6 +235,7 @@ export class Client {
       method: "POST",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
         "X-Idempotency-Key": request.idempotencyKey,
       },
       body: serializers.payments.ResumePaymentRequest.json(request._body),
@@ -256,6 +263,7 @@ export class Client {
       method: "GET",
       headers: {
         "X-API-KEY": await core.Supplier.get(this.options.auth?.apiKey),
+        "X-API-VERSION": this.options?.apiVersion,
         "X-Idempotency-Key": request.idempotencyKey,
       },
     });
