@@ -1,2 +1,2 @@
-export * as PrimerApi from "./resources";
-export { PrimerApiClient } from "./Client";
+export * as PrimerPrimerApi from "./resources";
+export { PrimerPrimerApiClient } from "./Client";

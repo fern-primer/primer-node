@@ -1,4 +1,3 @@
-export * from "./CreateClientSessionRequest";
 export * from "./OrderDetails";
 export * from "./LineItem";
 export * from "./ProductData";
@@ -14,4 +13,5 @@ export * from "./Surcharge";
 export * from "./CardNetwork";
 export * from "./ClientSession";
 export * from "./Warnings";
-export * from "./UpdateClientSessionRequest";
+export * from "./RequestValidationErrorBody";
+export * from "./ClientSessionValidationErrorBody";

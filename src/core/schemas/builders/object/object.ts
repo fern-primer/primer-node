@@ -1,5 +1,8 @@
 import { Schema } from "../../Schema";
 import { entries } from "../../utils/entries";
+import { filterObject } from "../../utils/filterObject";
+import { keys } from "../../utils/keys";
+import { partition } from "../../utils/partition";
 import { getObjectLikeUtils, OBJECT_LIKE_BRAND } from "../object-like";
 import { getSchemaUtils } from "../schema-utils";
 import { isProperty } from "./property";
@@ -24,8 +27,16 @@ export function object<ParsedKeys extends string, T extends PropertySchemas<Pars
 ): inferObjectSchemaFromPropertySchemas<T> {
   const baseSchema: BaseObjectSchema<inferRawObjectFromPropertySchemas<T>, inferParsedObjectFromPropertySchemas<T>> = {
     ...OBJECT_LIKE_BRAND,
+    _getRawProperties: () =>
+      Promise.resolve(
+        Object.entries(schemas).map(([parsedKey, propertySchema]) =>
+          isProperty(propertySchema) ? propertySchema.rawKey : parsedKey
+        ) as unknown as (keyof inferRawObjectFromPropertySchemas<T>)[]
+      ),
+    _getParsedProperties: () =>
+      Promise.resolve(keys(schemas) as unknown as (keyof inferParsedObjectFromPropertySchemas<T>)[]),
 
-    parse: (raw, { skipUnknownKeysOnParse = false } = {}) => {
+    parse: async (raw, { skipUnknownKeysOnParse = false } = {}) => {
       const rawKeyToProperty: Record<string, ObjectPropertyWithRawKey> = {};
 
       for (const [parsedKey, schemaOrObjectProperty] of entries(schemas)) {
@@ -46,7 +57,7 @@ export function object<ParsedKeys extends string, T extends PropertySchemas<Pars
         const property = rawKeyToProperty[rawKey];
 
         if (property != null) {
-          const value = property.valueSchema.parse(rawPropertyValue);
+          const value = await property.valueSchema.parse(rawPropertyValue);
           parsed[property.parsedKey] = value;
         } else if (!skipUnknownKeysOnParse && rawPropertyValue != null) {
           parsed[rawKey] = rawPropertyValue;
@@ -56,7 +67,7 @@ export function object<ParsedKeys extends string, T extends PropertySchemas<Pars
       return parsed as inferParsedObjectFromPropertySchemas<T>;
     },
 
-    json: (parsed, { includeUnknownKeysOnJson = false } = {}) => {
+    json: async (parsed, { includeUnknownKeysOnJson = false } = {}) => {
       const raw: Record<string | number | symbol, any> = {};
 
       for (const [parsedKey, parsedPropertyValue] of entries(parsed)) {
@@ -64,10 +75,10 @@ export function object<ParsedKeys extends string, T extends PropertySchemas<Pars
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (schemaOrObjectProperty != null) {
           if (isProperty(schemaOrObjectProperty)) {
-            const value = schemaOrObjectProperty.valueSchema.json(parsedPropertyValue);
+            const value = await schemaOrObjectProperty.valueSchema.json(parsedPropertyValue);
             raw[schemaOrObjectProperty.rawKey] = value;
           } else {
-            const value = schemaOrObjectProperty.json(parsedPropertyValue);
+            const value = await schemaOrObjectProperty.json(parsedPropertyValue);
             raw[parsedKey] = value;
           }
         } else if (includeUnknownKeysOnJson && parsedPropertyValue != null) {
@@ -92,14 +103,34 @@ export function getObjectUtils<Raw, Parsed>(schema: BaseObjectSchema<Raw, Parsed
     extend: <RawExtension, ParsedExtension>(extension: ObjectSchema<RawExtension, ParsedExtension>) => {
       const baseSchema: BaseObjectSchema<Raw & RawExtension, Parsed & ParsedExtension> = {
         ...OBJECT_LIKE_BRAND,
-        parse: (raw, opts) => ({
-          ...schema.parse(raw, opts),
-          ...extension.parse(raw, opts),
-        }),
-        json: (parsed, opts) => ({
-          ...schema.json(parsed, opts),
-          ...extension.json(parsed, opts),
-        }),
+        _getParsedProperties: async () => [
+          ...(await schema._getParsedProperties()),
+          ...(await extension._getParsedProperties()),
+        ],
+        _getRawProperties: async () => [
+          ...(await schema._getRawProperties()),
+          ...(await extension._getRawProperties()),
+        ],
+        parse: async (raw, opts) => {
+          const rawExtensionPropertiesSet = new Set(await extension._getRawProperties());
+          const [extensionProperties, otherProperties] = partition(keys(raw), (key) =>
+            rawExtensionPropertiesSet.has(key as keyof RawExtension)
+          );
+          return {
+            ...(await schema.parse(filterObject(raw, otherProperties), opts)),
+            ...(await extension.parse(filterObject(raw, extensionProperties), opts)),
+          };
+        },
+        json: async (parsed, opts) => {
+          const parsedExtensionPropertiesSet = new Set(await extension._getParsedProperties());
+          const [extensionProperties, otherProperties] = partition(keys(parsed), (key) =>
+            parsedExtensionPropertiesSet.has(key as keyof ParsedExtension)
+          );
+          return {
+            ...(await schema.json(filterObject(parsed, otherProperties), opts)),
+            ...(await extension.json(filterObject(parsed, extensionProperties), opts)),
+          };
+        },
       };
 
       return {
