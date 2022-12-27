@@ -1,6 +1,6 @@
 {
     "name": "@fern-api/primer",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "repository": "https://github.com/fern-primer/primer-node",
     "files": [
         "core",
