@@ -6,4 +6,4 @@ export * as paymentMethod from "./paymentMethod";
 export * from "./paymentMethod/types";
 export * as payments from "./payments";
 export * from "./payments/types";
-export * from "./clientSession/errors";
+export * from "./commons/errors";

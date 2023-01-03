@@ -108,6 +108,20 @@ export class Client {
       };
     }
 
+    if (_response.error.reason === "status-code") {
+      switch (_response.error.statusCode) {
+        case 422:
+          return {
+            ok: false,
+            error: PrimerPrimerApi.payments.search.Error.paymentsRequestValidationError(
+              await serializers.PaymentsRequestValidationError.parse(
+                _response.error.body as serializers.PaymentsRequestValidationError.Raw
+              )
+            ),
+          };
+      }
+    }
+
     return {
       ok: false,
       error: PrimerPrimerApi.payments.search.Error._unknown(_response.error),

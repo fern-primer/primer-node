@@ -6,6 +6,7 @@ import { PrimerPrimerApi } from "@fern-api/primer";
 
 export interface UpdateClientSessionRequest {
   clientToken?: string;
+  customerId?: PrimerPrimerApi.CustomerId;
   orderId?: PrimerPrimerApi.OrderId;
   currencyCode?: PrimerPrimerApi.CurrencyCode;
   amount?: number;

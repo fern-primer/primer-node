@@ -6,9 +6,22 @@ import { PrimerPrimerApi } from "@fern-api/primer";
 import * as core from "../../../core";
 
 export type Response = core.APIResponse<PrimerPrimerApi.ClientSession, PrimerPrimerApi.clientSession.get.Error>;
-export type Error = PrimerPrimerApi.clientSession.get.Error._Unknown;
+export type Error =
+  | PrimerPrimerApi.clientSession.get.Error.ClientSessionValidationError
+  | PrimerPrimerApi.clientSession.get.Error.RequestValidationError
+  | PrimerPrimerApi.clientSession.get.Error._Unknown;
 
 export declare namespace Error {
+  interface ClientSessionValidationError extends _Utils {
+    statusCode: 400;
+    content: PrimerPrimerApi.ClientSessionValidationError;
+  }
+
+  interface RequestValidationError extends _Utils {
+    statusCode: 422;
+    content: PrimerPrimerApi.RequestValidationError;
+  }
+
   interface _Unknown extends _Utils {
     statusCode: void;
     content: core.Fetcher.Error;
@@ -19,11 +32,41 @@ export declare namespace Error {
   }
 
   interface _Visitor<_Result> {
+    clientSessionValidationError: (value: PrimerPrimerApi.ClientSessionValidationError) => _Result;
+    requestValidationError: (value: PrimerPrimerApi.RequestValidationError) => _Result;
     _other: (value: core.Fetcher.Error) => _Result;
   }
 }
 
 export const Error = {
+  clientSessionValidationError: (
+    value: PrimerPrimerApi.ClientSessionValidationError
+  ): PrimerPrimerApi.clientSession.get.Error.ClientSessionValidationError => {
+    const valueWithoutVisit: Omit<PrimerPrimerApi.clientSession.get.Error.ClientSessionValidationError, "_visit"> = {
+      content: value,
+      statusCode: 400,
+    };
+    return core.addNonEnumerableProperty(valueWithoutVisit, "_visit", function <
+      _Result
+    >(this: PrimerPrimerApi.clientSession.get.Error.ClientSessionValidationError, visitor: PrimerPrimerApi.clientSession.get.Error._Visitor<_Result>) {
+      return PrimerPrimerApi.clientSession.get.Error._visit(this, visitor);
+    });
+  },
+
+  requestValidationError: (
+    value: PrimerPrimerApi.RequestValidationError
+  ): PrimerPrimerApi.clientSession.get.Error.RequestValidationError => {
+    const valueWithoutVisit: Omit<PrimerPrimerApi.clientSession.get.Error.RequestValidationError, "_visit"> = {
+      content: value,
+      statusCode: 422,
+    };
+    return core.addNonEnumerableProperty(valueWithoutVisit, "_visit", function <
+      _Result
+    >(this: PrimerPrimerApi.clientSession.get.Error.RequestValidationError, visitor: PrimerPrimerApi.clientSession.get.Error._Visitor<_Result>) {
+      return PrimerPrimerApi.clientSession.get.Error._visit(this, visitor);
+    });
+  },
+
   _unknown: (fetcherError: core.Fetcher.Error): PrimerPrimerApi.clientSession.get.Error._Unknown => {
     const valueWithoutVisit = fetcherError as unknown as Omit<
       PrimerPrimerApi.clientSession.get.Error._Unknown,
@@ -41,6 +84,10 @@ export const Error = {
     visitor: PrimerPrimerApi.clientSession.get.Error._Visitor<_Result>
   ): _Result => {
     switch (value.statusCode) {
+      case 400:
+        return visitor.clientSessionValidationError(value.content);
+      case 422:
+        return visitor.requestValidationError(value.content);
       default:
         return visitor._other(value as any);
     }

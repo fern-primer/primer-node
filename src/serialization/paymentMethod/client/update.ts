@@ -7,7 +7,7 @@ import { PrimerPrimerApi } from "@fern-api/primer";
 import * as core from "../../../core";
 
 export const Response: core.schemas.Schema<
-  serializers.paymentMethod.updateDefault.Response.Raw,
+  serializers.paymentMethod.update.Response.Raw,
   PrimerPrimerApi.PaymentMethodToken
 > = core.schemas.lazy(async () => (await import("../..")).PaymentMethodToken);
 

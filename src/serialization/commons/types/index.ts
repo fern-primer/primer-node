@@ -11,3 +11,8 @@ export * from "./CardNetworkType";
 export * from "./SupportedPaymentMethods";
 export * from "./AccountFundingType";
 export * from "./BaseErrorBody";
+export * from "./FailedVerificationErrorBody";
+export * from "./RequestValidationErrorBody";
+export * from "./ValidationModelError";
+export * from "./ClientSessionValidationErrorBody";
+export * from "./PaymentsRequestValidationBody";

@@ -9,8 +9,10 @@ export interface BaseErrorBody {
   errorId: PrimerPrimerApi.ErrorId;
   /** A human description of the error */
   description: string;
-  /** An ID that you can quote when contacting the support team (support@primer.io). */
+  /**
+   * An ID that you can quote when contacting the support team
+   * (support@primer.io).
+   *
+   */
   diagnosticsId: PrimerPrimerApi.DiagnosticsId;
-  /** Returned in case of a badly formed request */
-  validationErrors?: unknown;
 }

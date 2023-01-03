@@ -11,7 +11,6 @@ export const BaseErrorBody: core.schemas.ObjectSchema<serializers.BaseErrorBody.
     errorId: core.schemas.lazy(async () => (await import("../..")).ErrorId),
     description: core.schemas.string(),
     diagnosticsId: core.schemas.lazy(async () => (await import("../..")).DiagnosticsId),
-    validationErrors: core.schemas.unknown(),
   });
 
 export declare namespace BaseErrorBody {
@@ -19,6 +18,5 @@ export declare namespace BaseErrorBody {
     errorId: serializers.ErrorId.Raw;
     description: string;
     diagnosticsId: serializers.DiagnosticsId.Raw;
-    validationErrors?: unknown;
   }
 }

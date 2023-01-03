@@ -6,11 +6,11 @@ import * as serializers from "../..";
 import { PrimerPrimerApi } from "@fern-api/primer";
 import * as core from "../../../core";
 
-export const RequestValidationErrorBody: core.schemas.ObjectSchema<
-  serializers.RequestValidationErrorBody.Raw,
-  PrimerPrimerApi.RequestValidationErrorBody
+export const FailedVerificationErrorBody: core.schemas.ObjectSchema<
+  serializers.FailedVerificationErrorBody.Raw,
+  PrimerPrimerApi.FailedVerificationErrorBody
 > = core.schemas.object({}).extend(core.schemas.lazyObject(async () => (await import("../..")).BaseErrorBody));
 
-export declare namespace RequestValidationErrorBody {
+export declare namespace FailedVerificationErrorBody {
   interface Raw extends serializers.BaseErrorBody.Raw {}
 }

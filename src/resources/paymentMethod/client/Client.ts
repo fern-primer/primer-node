@@ -47,6 +47,29 @@ export class Client {
       };
     }
 
+    if (_response.error.reason === "status-code") {
+      switch (_response.error.statusCode) {
+        case 400:
+          return {
+            ok: false,
+            error: PrimerPrimerApi.paymentMethod.saveToken.Error.failedVerificationError(
+              await serializers.FailedVerificationError.parse(
+                _response.error.body as serializers.FailedVerificationError.Raw
+              )
+            ),
+          };
+        case 422:
+          return {
+            ok: false,
+            error: PrimerPrimerApi.paymentMethod.saveToken.Error.requestValidationError(
+              await serializers.RequestValidationError.parse(
+                _response.error.body as serializers.RequestValidationError.Raw
+              )
+            ),
+          };
+      }
+    }
+
     return {
       ok: false,
       error: PrimerPrimerApi.paymentMethod.saveToken.Error._unknown(_response.error),
@@ -109,9 +132,7 @@ export class Client {
     };
   }
 
-  public async updateDefault(
-    paymentMethodToken: string
-  ): Promise<PrimerPrimerApi.paymentMethod.updateDefault.Response> {
+  public async update(paymentMethodToken: string): Promise<PrimerPrimerApi.paymentMethod.update.Response> {
     const _response = await core.fetcher({
       url: urlJoin(
         this.options.environment ?? environments.Environment.Production,
@@ -126,15 +147,15 @@ export class Client {
     if (_response.ok) {
       return {
         ok: true,
-        body: await serializers.paymentMethod.updateDefault.Response.parse(
-          _response.body as serializers.paymentMethod.updateDefault.Response.Raw
+        body: await serializers.paymentMethod.update.Response.parse(
+          _response.body as serializers.paymentMethod.update.Response.Raw
         ),
       };
     }
 
     return {
       ok: false,
-      error: PrimerPrimerApi.paymentMethod.updateDefault.Error._unknown(_response.error),
+      error: PrimerPrimerApi.paymentMethod.update.Error._unknown(_response.error),
     };
   }
 }

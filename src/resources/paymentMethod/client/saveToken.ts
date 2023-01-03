@@ -9,9 +9,22 @@ export type Response = core.APIResponse<
   PrimerPrimerApi.PaymentMethodToken,
   PrimerPrimerApi.paymentMethod.saveToken.Error
 >;
-export type Error = PrimerPrimerApi.paymentMethod.saveToken.Error._Unknown;
+export type Error =
+  | PrimerPrimerApi.paymentMethod.saveToken.Error.FailedVerificationError
+  | PrimerPrimerApi.paymentMethod.saveToken.Error.RequestValidationError
+  | PrimerPrimerApi.paymentMethod.saveToken.Error._Unknown;
 
 export declare namespace Error {
+  interface FailedVerificationError extends _Utils {
+    statusCode: 400;
+    content: PrimerPrimerApi.FailedVerificationError;
+  }
+
+  interface RequestValidationError extends _Utils {
+    statusCode: 422;
+    content: PrimerPrimerApi.RequestValidationError;
+  }
+
   interface _Unknown extends _Utils {
     statusCode: void;
     content: core.Fetcher.Error;
@@ -22,11 +35,41 @@ export declare namespace Error {
   }
 
   interface _Visitor<_Result> {
+    failedVerificationError: (value: PrimerPrimerApi.FailedVerificationError) => _Result;
+    requestValidationError: (value: PrimerPrimerApi.RequestValidationError) => _Result;
     _other: (value: core.Fetcher.Error) => _Result;
   }
 }
 
 export const Error = {
+  failedVerificationError: (
+    value: PrimerPrimerApi.FailedVerificationError
+  ): PrimerPrimerApi.paymentMethod.saveToken.Error.FailedVerificationError => {
+    const valueWithoutVisit: Omit<PrimerPrimerApi.paymentMethod.saveToken.Error.FailedVerificationError, "_visit"> = {
+      content: value,
+      statusCode: 400,
+    };
+    return core.addNonEnumerableProperty(valueWithoutVisit, "_visit", function <
+      _Result
+    >(this: PrimerPrimerApi.paymentMethod.saveToken.Error.FailedVerificationError, visitor: PrimerPrimerApi.paymentMethod.saveToken.Error._Visitor<_Result>) {
+      return PrimerPrimerApi.paymentMethod.saveToken.Error._visit(this, visitor);
+    });
+  },
+
+  requestValidationError: (
+    value: PrimerPrimerApi.RequestValidationError
+  ): PrimerPrimerApi.paymentMethod.saveToken.Error.RequestValidationError => {
+    const valueWithoutVisit: Omit<PrimerPrimerApi.paymentMethod.saveToken.Error.RequestValidationError, "_visit"> = {
+      content: value,
+      statusCode: 422,
+    };
+    return core.addNonEnumerableProperty(valueWithoutVisit, "_visit", function <
+      _Result
+    >(this: PrimerPrimerApi.paymentMethod.saveToken.Error.RequestValidationError, visitor: PrimerPrimerApi.paymentMethod.saveToken.Error._Visitor<_Result>) {
+      return PrimerPrimerApi.paymentMethod.saveToken.Error._visit(this, visitor);
+    });
+  },
+
   _unknown: (fetcherError: core.Fetcher.Error): PrimerPrimerApi.paymentMethod.saveToken.Error._Unknown => {
     const valueWithoutVisit = fetcherError as unknown as Omit<
       PrimerPrimerApi.paymentMethod.saveToken.Error._Unknown,
@@ -44,6 +87,10 @@ export const Error = {
     visitor: PrimerPrimerApi.paymentMethod.saveToken.Error._Visitor<_Result>
   ): _Result => {
     switch (value.statusCode) {
+      case 400:
+        return visitor.failedVerificationError(value.content);
+      case 422:
+        return visitor.requestValidationError(value.content);
       default:
         return visitor._other(value as any);
     }

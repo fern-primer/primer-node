@@ -4,4 +4,4 @@
 
 import { PrimerPrimerApi } from "@fern-api/primer";
 
-export interface RequestValidationErrorBody extends PrimerPrimerApi.BaseErrorBody {}
+export type FailedVerificationError = PrimerPrimerApi.FailedVerificationErrorBody;

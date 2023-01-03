@@ -101,6 +101,29 @@ export class Client {
       };
     }
 
+    if (_response.error.reason === "status-code") {
+      switch (_response.error.statusCode) {
+        case 400:
+          return {
+            ok: false,
+            error: PrimerPrimerApi.clientSession.get.Error.clientSessionValidationError(
+              await serializers.ClientSessionValidationError.parse(
+                _response.error.body as serializers.ClientSessionValidationError.Raw
+              )
+            ),
+          };
+        case 422:
+          return {
+            ok: false,
+            error: PrimerPrimerApi.clientSession.get.Error.requestValidationError(
+              await serializers.RequestValidationError.parse(
+                _response.error.body as serializers.RequestValidationError.Raw
+              )
+            ),
+          };
+      }
+    }
+
     return {
       ok: false,
       error: PrimerPrimerApi.clientSession.get.Error._unknown(_response.error),
@@ -119,6 +142,7 @@ export class Client {
       },
       body: await serializers.clientSession.update.Request.json({
         clientToken: request?.clientToken,
+        customerId: request?.customerId,
         orderId: request?.orderId,
         currencyCode: request?.currencyCode,
         amount: request?.amount,
@@ -135,6 +159,29 @@ export class Client {
           _response.body as serializers.clientSession.update.Response.Raw
         ),
       };
+    }
+
+    if (_response.error.reason === "status-code") {
+      switch (_response.error.statusCode) {
+        case 400:
+          return {
+            ok: false,
+            error: PrimerPrimerApi.clientSession.update.Error.clientSessionValidationError(
+              await serializers.ClientSessionValidationError.parse(
+                _response.error.body as serializers.ClientSessionValidationError.Raw
+              )
+            ),
+          };
+        case 422:
+          return {
+            ok: false,
+            error: PrimerPrimerApi.clientSession.update.Error.requestValidationError(
+              await serializers.RequestValidationError.parse(
+                _response.error.body as serializers.RequestValidationError.Raw
+              )
+            ),
+          };
+      }
     }
 
     return {

@@ -13,5 +13,3 @@ export * from "./Surcharge";
 export * from "./CardNetwork";
 export * from "./ClientSession";
 export * from "./Warnings";
-export * from "./RequestValidationErrorBody";
-export * from "./ClientSessionValidationErrorBody";

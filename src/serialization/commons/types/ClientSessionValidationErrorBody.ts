@@ -9,8 +9,14 @@ import * as core from "../../../core";
 export const ClientSessionValidationErrorBody: core.schemas.ObjectSchema<
   serializers.ClientSessionValidationErrorBody.Raw,
   PrimerPrimerApi.ClientSessionValidationErrorBody
-> = core.schemas.object({}).extend(core.schemas.lazyObject(async () => (await import("../..")).BaseErrorBody));
+> = core.schemas
+  .object({
+    recoverySuggestion: core.schemas.string(),
+  })
+  .extend(core.schemas.lazyObject(async () => (await import("../..")).BaseErrorBody));
 
 export declare namespace ClientSessionValidationErrorBody {
-  interface Raw extends serializers.BaseErrorBody.Raw {}
+  interface Raw extends serializers.BaseErrorBody.Raw {
+    recoverySuggestion: string;
+  }
 }

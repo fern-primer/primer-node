@@ -10,8 +10,9 @@ export const PaymentCardTokenSchemaPaymentMethodsApi: core.schemas.ObjectSchema<
   serializers.PaymentCardTokenSchemaPaymentMethodsApi.Raw,
   PrimerPrimerApi.PaymentCardTokenSchemaPaymentMethodsApi
 > = core.schemas.object({
-  paymentMethodData: core.schemas.lazyObject(
-    async () => (await import("../..")).PaymentCardTokenApiSchemaPaymentMethodsApi
+  paymentMethodData: core.schemas.property(
+    "payment_method_data",
+    core.schemas.lazyObject(async () => (await import("../..")).PaymentCardTokenApiSchemaPaymentMethodsApi)
   ),
   createdAt: core.schemas.date().optional(),
   deletedAt: core.schemas.date().optional(),
@@ -27,7 +28,7 @@ export const PaymentCardTokenSchemaPaymentMethodsApi: core.schemas.ObjectSchema<
 
 export declare namespace PaymentCardTokenSchemaPaymentMethodsApi {
   interface Raw {
-    paymentMethodData: serializers.PaymentCardTokenApiSchemaPaymentMethodsApi.Raw;
+    payment_method_data: serializers.PaymentCardTokenApiSchemaPaymentMethodsApi.Raw;
     createdAt?: string | null;
     deletedAt?: string | null;
     deleted?: boolean | null;

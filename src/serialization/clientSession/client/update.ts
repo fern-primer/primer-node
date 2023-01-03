@@ -11,6 +11,7 @@ export const Request: core.schemas.Schema<
   PrimerPrimerApi.UpdateClientSessionRequest
 > = core.schemas.object({
   clientToken: core.schemas.string().optional(),
+  customerId: core.schemas.lazy(async () => (await import("../..")).CustomerId).optional(),
   orderId: core.schemas.lazy(async () => (await import("../..")).OrderId).optional(),
   currencyCode: core.schemas.lazy(async () => (await import("../..")).CurrencyCode).optional(),
   amount: core.schemas.number().optional(),
@@ -23,6 +24,7 @@ export const Request: core.schemas.Schema<
 export declare namespace Request {
   interface Raw {
     clientToken?: string | null;
+    customerId?: serializers.CustomerId.Raw | null;
     orderId?: serializers.OrderId.Raw | null;
     currencyCode?: serializers.CurrencyCode.Raw | null;
     amount?: number | null;

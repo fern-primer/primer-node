@@ -6,9 +6,16 @@ import { PrimerPrimerApi } from "@fern-api/primer";
 import * as core from "../../../core";
 
 export type Response = core.APIResponse<PrimerPrimerApi.PaymentsData, PrimerPrimerApi.payments.search.Error>;
-export type Error = PrimerPrimerApi.payments.search.Error._Unknown;
+export type Error =
+  | PrimerPrimerApi.payments.search.Error.PaymentsRequestValidationError
+  | PrimerPrimerApi.payments.search.Error._Unknown;
 
 export declare namespace Error {
+  interface PaymentsRequestValidationError extends _Utils {
+    statusCode: 422;
+    content: PrimerPrimerApi.PaymentsRequestValidationError;
+  }
+
   interface _Unknown extends _Utils {
     statusCode: void;
     content: core.Fetcher.Error;
@@ -19,11 +26,26 @@ export declare namespace Error {
   }
 
   interface _Visitor<_Result> {
+    paymentsRequestValidationError: (value: PrimerPrimerApi.PaymentsRequestValidationError) => _Result;
     _other: (value: core.Fetcher.Error) => _Result;
   }
 }
 
 export const Error = {
+  paymentsRequestValidationError: (
+    value: PrimerPrimerApi.PaymentsRequestValidationError
+  ): PrimerPrimerApi.payments.search.Error.PaymentsRequestValidationError => {
+    const valueWithoutVisit: Omit<PrimerPrimerApi.payments.search.Error.PaymentsRequestValidationError, "_visit"> = {
+      content: value,
+      statusCode: 422,
+    };
+    return core.addNonEnumerableProperty(valueWithoutVisit, "_visit", function <
+      _Result
+    >(this: PrimerPrimerApi.payments.search.Error.PaymentsRequestValidationError, visitor: PrimerPrimerApi.payments.search.Error._Visitor<_Result>) {
+      return PrimerPrimerApi.payments.search.Error._visit(this, visitor);
+    });
+  },
+
   _unknown: (fetcherError: core.Fetcher.Error): PrimerPrimerApi.payments.search.Error._Unknown => {
     const valueWithoutVisit = fetcherError as unknown as Omit<PrimerPrimerApi.payments.search.Error._Unknown, "_visit">;
     return core.addNonEnumerableProperty(valueWithoutVisit, "_visit", function <
@@ -38,6 +60,8 @@ export const Error = {
     visitor: PrimerPrimerApi.payments.search.Error._Visitor<_Result>
   ): _Result => {
     switch (value.statusCode) {
+      case 422:
+        return visitor.paymentsRequestValidationError(value.content);
       default:
         return visitor._other(value as any);
     }

@@ -4,4 +4,6 @@
 
 import { PrimerPrimerApi } from "@fern-api/primer";
 
-export interface ClientSessionValidationErrorBody extends PrimerPrimerApi.BaseErrorBody {}
+export interface PaymentsRequestValidationBody extends PrimerPrimerApi.BaseErrorBody {
+  recoverySuggestion: string;
+}
